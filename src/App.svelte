@@ -2,11 +2,27 @@
 	
 	import WxrdPage from './components/WxrdPage.svelte';
 
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasCardKey = urlParams.has('cardKey');
+    const cardKey = urlParams.get('cardKey');
+
+
 </script>
 
 <main>
 	
-<WxrdPage />
+    
+{#if hasCardKey}
+    
+    <p>card key {cardKey} found!</p>
+
+{:else}
+    
+	<WxrdPage />
+
+{/if}
+
 
 </main>
 
