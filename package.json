@@ -5,7 +5,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --no-clear"
+    "start": "sirv public --no-clear",
+    "bootstrap": "node ./scripts/bootstrap-fauna-database.js"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "@entomdt/myriad-core": "^0.2.1",
+    "faunadb": "^4.4.1",
     "sirv-cli": "^1.0.0"
   }
 }
