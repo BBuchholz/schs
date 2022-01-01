@@ -1,5 +1,8 @@
 <script>
 
+	import { allLoadedWxrds } from '../stores.js';
+	import { readAll } from '../api/wxrds-api.js';
+	
 	import DjehutiController from '../myriad/DjehutiController.js';
 
 	const djehuti = DjehutiController();
@@ -43,6 +46,13 @@
 	    wxrds = data;
 	  }
 
+	function loadWxrds() {
+
+		const allWxrds = readAll();
+
+		$allLoadedWxrds = [...$allLoadedWxrds, allWxrds];
+	}
+
 
 </script>
 
@@ -51,17 +61,19 @@
 	Hello {currentWxrd}
 
 	<button on:click={createANewWxrd}>Test Create Wxrd</button>
+	<button on:click={loadWxrds}>Load Wxrds</button>
+
 
 
   <div id="wxrds">
   	
-  	{#foreach}
+  	{#each $allLoadedWxrds as wxrd, i}
 
-  	<div className="wxrd-card" key={i}>{wxrd.data.text}</div>
+  		<div class="wxrd-card" key={i}>{wxrd}</div>
 
 
-  	<!-- TODO: make this for each loop work, all the scaffolding is in place, copying from rising-myriad, cf. for details -->
-  	{}
+  	<!-- TODO: make this card work, data isn't displaying properly but it is returning, need to play with console log and some different values to see what we can get working, soo close-->
+  	{/each}
 
   </div>
 </div>

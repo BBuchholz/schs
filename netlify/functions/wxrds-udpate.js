@@ -9,10 +9,11 @@ const client = new faunadb.Client({
 
 exports.handler = (event, context, callback) => {
   
+  const data = JSON.parse(event.body);
   const id = getId(event.path);
-  console.log(`Function 'wxrds-read' invoked. Read id: ${id}`);
+  console.log(`Function 'wxrds-update' invoked. Update id: ${id}`);
   
-  return client.query(q.Get(q.Ref(`classes/wxrds/${id}`)))
+  return client.query(q.Update(q.Ref(`classes/wxrds/${id}`), {data}))
     .then((response) => {
       console.log("success", response)
       /* Success! return the response with statusCode 200 */

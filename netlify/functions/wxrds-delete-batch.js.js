@@ -9,10 +9,15 @@ const client = new faunadb.Client({
 
 exports.handler = (event, context, callback) => {
   
-  const id = getId(event.path);
-  console.log(`Function 'wxrds-read' invoked. Read id: ${id}`);
+  const data = JSON.parse(event.body);
+  console.log('data', data);
+  console.log(`Function 'wxrds-delete-batch' invoked.`, data.ids);
   
-  return client.query(q.Get(q.Ref(`classes/wxrds/${id}`)))
+  const deleteAllMatchingWxrdsQuery = data.ids.map((id) => {
+    return q.Delete(q.Ref(`classes/wxrds/${id}`));
+  });
+
+  return client.query(deleteAllMatchingWxrdsQuery)
     .then((response) => {
       console.log("success", response)
       /* Success! return the response with statusCode 200 */
