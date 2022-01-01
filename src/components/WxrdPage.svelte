@@ -50,7 +50,15 @@
 
 		const allWxrds = readAll();
 
-		$allLoadedWxrds = [...$allLoadedWxrds, allWxrds];
+		readAll().then((response) => {
+		  console.log('API response', response)
+		  // set app state
+
+			$allLoadedWxrds = [...response];
+		}).catch((error) => {
+		  console.log('API error', error)
+		});
+
 	}
 
 
