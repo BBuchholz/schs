@@ -6,7 +6,7 @@
 	import DjehutiController from '../myriad/DjehutiController.js';
 
 	const djehuti = DjehutiController();
-	export let currentWxrd = djehuti.createWxrd('not yet initialized').result;
+	export let currentWxrd = djehuti.createWxrd('not yet initialized').payload;
 
 	const wxrds = [];
 
@@ -40,6 +40,14 @@
 
 	}
 
+	function dumpProps(obj, obj_name) {
+	  let result = '';
+	  for (let i in obj) {
+	    result += obj_name + '.' + i + ' = ' + obj[i];
+	  }
+	  return result;
+	}
+
 	const getMemories = async () => {
 	    const resp = await fetch('/api/wxrds-read-all')
 	    const data = await resp.json()
@@ -53,6 +61,8 @@
 		readAll().then((response) => {
 		  console.log('API response', response)
 		  // set app state
+
+
 
 			$allLoadedWxrds = [...response];
 		}).catch((error) => {
@@ -73,15 +83,36 @@
 
 
 
-  <div id="wxrds">
+  <div class="wxrds">
   	
   	{#each $allLoadedWxrds as wxrd, i}
-
-  		<div class="wxrd-card" key={i}>{wxrd}</div>
-
+<p>test</p>
+  		<div class="wxrd-card" key={i}>
+	  		{dumpProps(wxrd, 'wxrd')}
+	  	</div>
 
   	<!-- TODO: make this card work, data isn't displaying properly but it is returning, need to play with console log and some different values to see what we can get working, soo close-->
+  	
   	{/each}
 
   </div>
+
 </div>
+
+<style>
+	.wxrds {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		background: blue;
+	}
+
+	.wxrd-card {
+		margin: 5;
+		padding: 10;
+		background: black;
+		display:  inline-block;
+		justify-content: space-around;
+	}
+</style>
