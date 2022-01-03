@@ -1,118 +1,154 @@
 <script>
 
-	import { allLoadedWxrds } from '../stores.js';
-	import { readAll } from '../api/wxrds-api.js';
-	
-	import DjehutiController from '../myriad/DjehutiController.js';
+  import { allLoadedWxrds } from '../stores.js';
+  import { readAll } from '../api/wxrds-api.js';
 
-	const djehuti = DjehutiController();
-	export let currentWxrd = djehuti.createWxrd('not yet initialized').payload;
+  import WxrdCard from './WxrdCard.svelte';
+  
+  import DjehutiController from '../myriad/DjehutiController.js';
 
-	const wxrds = [];
+  const djehuti = DjehutiController();
+  export let currentWxrd = djehuti.createWxrd('not yet initialized').payload;
 
-	// Function using fetch to POST to our API endpoint
-	function createThisWxrd(data) {
-	  return fetch('/api/wxrds-create', {
-	    body: JSON.stringify(data),
-	    method: 'POST'
-	  }).then(response => {
-	    return response.json()
-	  })
-	}
+  const wxrds = [];
 
-	function createANewWxrd(){
+  // Function using fetch to POST to our API endpoint
+  function createThisWxrd(multiLineInput) {
 
-		const timestamp = Date.now();
+    const newWxrd = djehuti.createWxrd(multiLineInput).payload;
+    console.log('wxrd created', newWxrd);
 
-		// Todo data
-		const myWxrd = {
-		  title: "test " + timestamp,
-		  completed: false,
-		}
+    return fetch('/api/wxrds-create', {
+      body: JSON.stringify(newWxrd),
+      method: 'POST'
+    }).then(response => {
+      return response.json()
+    })
+  }
 
-		// create it!
-		createThisWxrd(myWxrd).then((response) => {
-		  console.log('API response', response)
-		  // set app state
-		}).catch((error) => {
-		  console.log('API error', error)
-		})
+  function processResponseObject(responseObj){
 
-	}
+    const strRespObj = JSON.stringify(responseObj);
 
-	function dumpProps(obj, obj_name) {
-	  let result = '';
-	  for (let i in obj) {
-	    result += obj_name + '.' + i + ' = ' + obj[i];
-	  }
-	  return result;
-	}
-
-	const getMemories = async () => {
-	    const resp = await fetch('/api/wxrds-read-all')
-	    const data = await resp.json()
-	    wxrds = data;
-	  }
-
-	function loadWxrds() {
-
-		const allWxrds = readAll();
-
-		readAll().then((response) => {
-		  console.log('API response', response)
-		  // set app state
+    console.log('processing response object...', strRespObj);
 
 
+    const opRes = djehuti.importWxrdFromJson(strRespObj);
 
-			$allLoadedWxrds = [...response];
-		}).catch((error) => {
-		  console.log('API error', error)
-		});
+    if(opRes.successful){
+    
+      const newWxrd = opRes.payload;     
 
-	}
+      console.log('processed into wxrd', newWxrd);
+
+      return newWxrd; 
+    } else {
+
+      console.log('op result unsuccessful', opRes);
+
+      return null;
+    }
+  }
+
+  function createANewWxrd(){
+
+    const timestamp = Date.now();
+
+    // Todo data
+    const myWxrdInput = "testing string input " + timestamp;
+
+
+    // create it!
+    createThisWxrd(myWxrdInput).then((response) => {
+      console.log('API response', response)
+
+      const processed = processResponseObject(response.data);
+
+      $allLoadedWxrds = [...$allLoadedWxrds, processed];
+
+      // set app state
+    }).catch((error) => {
+      console.log('API error', error)
+    })
+
+  }
+
+  // function dumpProps(obj, obj_name) {
+  //   let result = '';
+  //   for (let i in obj) {
+  //     result += obj_name + '.' + i + ' = ' + obj[i];
+  //   }
+  //   return result;
+  // }
+
+  // // const getMemories = async () => {
+  // //     const resp = await fetch('/api/wxrds-read-all')
+  // //     const data = await resp.json()
+  // //     wxrds = data;
+  // //   }
+
+  function loadWxrds() {
+
+    const allWxrds = readAll();
+
+    readAll().then((response) => {
+      console.log('API response', response)
+      // set app state
+
+      const collected = [];
+
+      for(const responseObj of response){
+
+
+      const processed = processResponseObject(responseObj.data);
+
+        collected.push(processed);
+      }
+
+
+      $allLoadedWxrds = [...collected];    
+
+    }).catch((error) => {
+      console.log('API error', error)
+    });
+
+  }
 
 
 </script>
 
 <div>
 
-	Hello {currentWxrd}
+  Hello {currentWxrd}
 
-	<button on:click={createANewWxrd}>Test Create Wxrd</button>
-	<button on:click={loadWxrds}>Load Wxrds</button>
+  <button on:click={createANewWxrd}>Test Create Wxrd</button>
+  <button on:click={loadWxrds}>Load Wxrds</button>
 
 
 
   <div class="wxrds">
-  	
-  	{#each $allLoadedWxrds as wxrd, i}
+    
+    {#each $allLoadedWxrds as wxrd, i}
 <p>test</p>
-  		<div class="wxrd-card" key={i}>
-	  		{dumpProps(wxrd, 'wxrd')}
-	  	</div>
 
-  	<!-- TODO: make this card work, data isn't displaying properly but it is returning, need to play with console log and some different values to see what we can get working, soo close-->
-  	
-  	{/each}
+    <WxrdCard {wxrd} />
+
+    <!-- TODO: make this card work, data isn't displaying properly but it is returning, need to play with console log and some different values to see what we can get working, soo close-->
+    
+    {/each}
 
   </div>
 
 </div>
 
 <style>
-	.wxrds {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-around;
-		background: blue;
-	}
 
-	.wxrd-card {
-		margin: 5;
-		padding: 10;
-		background: black;
-		display:  inline-block;
-		justify-content: space-around;
-	}
+  .wxrds {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: #0000ff;
+  }
+
 </style>
