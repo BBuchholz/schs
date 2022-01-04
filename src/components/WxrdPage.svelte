@@ -42,6 +42,7 @@
       console.log('processed into wxrd', newWxrd);
 
       return newWxrd; 
+      
     } else {
 
       console.log('op result unsuccessful', opRes);

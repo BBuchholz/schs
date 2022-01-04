@@ -12,13 +12,25 @@
 
 </script>
 
+
+
 <div class="wxrd-card">
 
-  {dumpProps(wxrd, 'wxrd')}
+{#if wxrd !== null}
+
+  {dumpProps(wxrd.metaData, 'wxrd.metaData')}
 
   <div class="wxrd-value">
+
     {wxrd.getAlias()}
+    
   </div>
+
+{:else}
+
+  Wxrd is null
+
+{/if}
 
 </div>
 

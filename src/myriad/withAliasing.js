@@ -20,6 +20,10 @@ const withAliasing = (self) => ({
 
     }
 
+    if(!self.aliases.get){
+      return '[ALIAS NOT FOUND]';
+    }
+
     return self.aliases.get(uuidToReturnAliasFor);
 
   },

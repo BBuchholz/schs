@@ -8,7 +8,15 @@ const UUID_KEY = 'uuid';
 
 const withUniversalId = (self) => ({
 
-  getUuid: () => self.metaData.get(UUID_KEY),
+  getUuid: () => {
+
+    if(!self.metaData.get){
+      return '';
+    }
+
+    self.metaData.get(UUID_KEY); 
+
+  },
 
   initializeUuid: () => {
 
