@@ -5,9 +5,14 @@
 
   import WxrdCard from './WxrdCard.svelte';
   
-  import DjehutiController from '../myriad/DjehutiController.js';
+  // import DjehutiController from '../myriad/DjehutiController.js';
 
-  const djehuti = DjehutiController();
+  // const djehuti = DjehutiController();
+
+  import { Djehuti } from '../myriad/Djehuti.js';
+
+  const djehuti = new Djehuti();
+
   export let currentWxrd = djehuti.createWxrd('not yet initialized').payload;
 
   const wxrds = [];

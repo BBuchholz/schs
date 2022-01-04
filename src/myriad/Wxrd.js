@@ -1,14 +1,14 @@
 /**
  * @file Defines a Wxrd.
  */
-const withUniversalId = require('./withUniversalId');
-const withTyping = require('./withTyping');
-const withAliasing = require('./withAliasing');
-const canLog = require('./canLog');
-const withTransport = require('./withTransport');
-const withMembers = require('./withMembers');
+// const withUniversalId = require('./withUniversalId');
+// const withTyping = require('./withTyping');
+// const withAliasing = require('./withAliasing');
+// const canLog = require('./canLog');
+// const withTransport = require('./withTransport');
+// const withMembers = require('./withMembers');
 
-const Wxrd = (initializationData) => {
+const WxrdOldFormKeepForPorting = (initializationData) => {
 
   const self = {
     metaData: new Map(),
@@ -70,4 +70,12 @@ const Wxrd = (initializationData) => {
 
 };
 
-module.exports = Wxrd;
+export class Wxrd {
+
+  wxrdValue = '';
+
+  constructor(multiLineInput){
+
+    this.wxrdValue = multiLineInput;
+  }
+}
