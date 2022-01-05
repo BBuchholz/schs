@@ -20,6 +20,34 @@ it('should create wxrd from multiline string input', () => {
   tags: testing, test`;
 
   const createdWxrd = djehuti.createWxrd(multiLineInput);
-  expect(createdWxrd.wxrdValue).toBe(multiLineInput);
+  expect(createdWxrd.metaData.wxrdValue).toBe(multiLineInput);
+
+});
+
+
+it('should import a wxrd from a json string', () => {
+
+  const multiLineInput = `Something I wrote down to remember... 
+  alias: Test String
+  tags: testing, test`;
+
+  const createdWxrd = djehuti.createWxrd(multiLineInput);
+
+  const stringifiedWxrd = JSON.stringify(createdWxrd);
+
+  expect(createdWxrd).not.toBe(stringifiedWxrd);
+
+  const importedWxrd = djehuti.importWxrdFromJson(stringifiedWxrd);
+
+  expect(importedWxrd).toEqual(createdWxrd);
+
+});
+
+
+it('should throw an error if import string is not json', () => {
+
+  expect(() => {
+    djehuti.importWxrdFromJson('this is just a string')
+  }).toThrow();
 
 });

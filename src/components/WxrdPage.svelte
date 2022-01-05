@@ -4,23 +4,17 @@
   import { readAll } from '../api/wxrds-api.js';
 
   import WxrdCard from './WxrdCard.svelte';
-  
-  // import DjehutiController from '../myriad/DjehutiController.js';
-
-  // const djehuti = DjehutiController();
 
   import { Djehuti } from '../myriad/Djehuti.js';
 
   const djehuti = new Djehuti();
-
-  export let currentWxrd = djehuti.createWxrd('not yet initialized').payload;
 
   const wxrds = [];
 
   // Function using fetch to POST to our API endpoint
   function createThisWxrd(multiLineInput) {
 
-    const newWxrd = djehuti.createWxrd(multiLineInput).payload;
+    const newWxrd = djehuti.createWxrd(multiLineInput);
     console.log('wxrd created', newWxrd);
 
     return fetch('/api/wxrds-create', {
@@ -124,8 +118,6 @@
 </script>
 
 <div>
-
-  Hello {currentWxrd}
 
   <button on:click={createANewWxrd}>Test Create Wxrd</button>
   <button on:click={loadWxrds}>Load Wxrds</button>

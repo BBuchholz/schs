@@ -8,6 +8,8 @@
 // const withTransport = require('./withTransport');
 // const withMembers = require('./withMembers');
 
+import { v4 as uuidv4 } from 'uuid';
+
 const WxrdOldFormKeepForPorting = (initializationData) => {
 
   const self = {
@@ -72,10 +74,64 @@ const WxrdOldFormKeepForPorting = (initializationData) => {
 
 export class Wxrd {
 
-  wxrdValue = '';
+  metaData = {
+    wxrdValue: '',
+    wxrdType: 'Wxrd',
+  };
 
-  constructor(multiLineInput){
+  aliases = {};
+  members = {};
 
-    this.wxrdValue = multiLineInput;
+  constructor(initializationData){
+
+    if (typeof initializationData === 'string'
+        || initializationData instanceof String) {
+
+      this.initializeUuid();
+      this.initializeCreatedAt();
+      this.setAlias(this.getUuid(), initializationData);
+      this.metaData.wxrdValue = initializationData;
+      
+
+    } else if ('metaData' in initializationData) {
+
+      this.metaData = initializationData.metaData;
+
+    } else {
+
+      throw 'unrecognized initialization data!';
+
+    }
+
+  }
+
+  initializeUuid() {
+
+    if(!'uuid' in this.metaData){
+      this.metaData.uuid = uuidv4();
+    }
+  }
+
+  getUuid() {
+
+    if(!'uuid' in this.metaData){
+
+      throw 'uuid not initialized!';
+    }
+
+    return this.metaData.uuid;
+  }
+
+  initializeCreatedAt() {
+
+    if(!'createdAt' in this.metaData){
+
+      const currentTime = new Date();
+      this.metaData.createdAt = currentTime.toISOString();
+    }
+  }
+
+  setAlias() {
+
   }
 }
