@@ -131,7 +131,24 @@ export class Wxrd {
     }
   }
 
-  setAlias() {
+  setAlias(uuidKey, aliasValue) {
 
+    this.aliases[uuidKey] = aliasValue;
+  }
+
+  getAlias(uuidToGet) {
+
+    if(!uuidToGet){
+
+      uuidToGet = this.getUuid();
+
+    }
+
+    if(!uuidToGet in this.aliases){
+
+      return '[ALIAS NOT FOUND FOR <' + uuidToGet + '>]';
+    }
+
+    return this.aliases[uuidToGet];
   }
 }

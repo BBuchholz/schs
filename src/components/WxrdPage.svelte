@@ -32,22 +32,18 @@
     console.log('processing response object...', strRespObj);
 
 
-    const opRes = djehuti.importWxrdFromJson(strRespObj);
-
-    if(opRes.successful){
-    
-      const newWxrd = opRes.payload;     
-
-      console.log('processed into wxrd', newWxrd);
-
-      return newWxrd; 
+    try{
       
-    } else {
+      return djehuti.importWxrdFromJson(strRespObj);
+    
+    }catch(err){
 
-      console.log('op result unsuccessful', opRes);
+      console.log("error processing response object: " + err);
 
       return null;
+
     }
+
   }
 
   function createANewWxrd(){
@@ -60,6 +56,7 @@
 
     // create it!
     createThisWxrd(myWxrdInput).then((response) => {
+
       console.log('API response', response)
 
       const processed = processResponseObject(response.data);
@@ -99,10 +96,14 @@
 
       for(const responseObj of response){
 
+        const processed = 
+          processResponseObject(responseObj.data);
 
-      const processed = processResponseObject(responseObj.data);
+          if(processed != null){
 
-        collected.push(processed);
+            collected.push(processed);
+
+          }
       }
 
 
@@ -127,6 +128,7 @@
   <div class="wxrds">
     
     {#each $allLoadedWxrds as wxrd, i}
+
 <p>test</p>
 
     <WxrdCard {wxrd} />

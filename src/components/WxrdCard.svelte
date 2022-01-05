@@ -2,13 +2,6 @@
 
   export let wxrd = null;
   
-  function dumpProps(obj, obj_name) {
-    let result = '';
-    for (let i in obj) {
-      result += obj_name + '.' + i + ' = ' + obj[i];
-    }
-    return result;
-  }
 
 </script>
 
@@ -18,11 +11,9 @@
 
 {#if wxrd !== null}
 
-  {dumpProps(wxrd.metaData, 'wxrd.metaData')}
-
   <div class="wxrd-value">
 
-    {wxrd.getAlias()}
+    Alias: {wxrd.getAlias()}
     
   </div>
 
