@@ -129,7 +129,7 @@
     
     {#each $allLoadedWxrds as wxrd, i}
 
-<p>test</p>
+    <p>test</p>
 
     <WxrdCard {wxrd} />
 

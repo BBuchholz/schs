@@ -10,6 +10,8 @@
 
 import { v4 as uuidv4 } from 'uuid';
 
+const INITIAL_WXRD_UUID = '[wxrdUuid NOT SET]';
+
 const WxrdOldFormKeepForPorting = (initializationData) => {
 
   const self = {
@@ -77,6 +79,7 @@ export class Wxrd {
   metaData = {
     wxrdValue: '',
     wxrdType: 'Wxrd',
+    wxrdUuid: INITIAL_WXRD_UUID,
   };
 
   aliases = {};
@@ -87,6 +90,8 @@ export class Wxrd {
     if (typeof initializationData === 'string'
         || initializationData instanceof String) {
 
+      // console.log('initializing...');
+
       this.initializeUuid();
       this.initializeCreatedAt();
       this.setAlias(this.getUuid(), initializationData);
@@ -96,6 +101,8 @@ export class Wxrd {
     } else if ('metaData' in initializationData) {
 
       this.metaData = initializationData.metaData;
+      this.aliases = initializationData.aliases;
+      this.members = initializationData.members;
 
     } else {
 
@@ -107,19 +114,24 @@ export class Wxrd {
 
   initializeUuid() {
 
-    if(!'uuid' in this.metaData){
-      this.metaData.uuid = uuidv4();
+    if(this.metaData.wxrdUuid = INITIAL_WXRD_UUID){
+      const newUuid = uuidv4();
+      // console.log('initializing wxrdUuid to ' + newUuid);
+      this.metaData.wxrdUuid = uuidv4();
+    } else {
+      const foundUuid = this.metaData.wxrdUuid;
+      // console.log('wxrdUuid already exists as <' + foundUuid + '>, skipping initialization');
     }
   }
 
   getUuid() {
 
-    if(!'uuid' in this.metaData){
+    if(!'wxrdUuid' in this.metaData){
 
-      throw 'uuid not initialized!';
+      throw 'wxrdUuid not initialized!';
     }
 
-    return this.metaData.uuid;
+    return this.metaData.wxrdUuid;
   }
 
   initializeCreatedAt() {
