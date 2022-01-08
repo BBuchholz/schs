@@ -31,18 +31,22 @@
 
     console.log('processing response object...', strRespObj);
 
+    let processed = {
+      wxrd: null,
+      ref: null
+    };
 
     try{
       
-      return djehuti.importWxrdFromJson(strRespObj);
+      processed.wxrd = djehuti.importWxrdFromJson(strRespObj);
     
     }catch(err){
 
       console.log("error processing response object: " + err);
 
-      return null;
-
     }
+
+    return processed;
 
   }
 
@@ -127,11 +131,11 @@
 
   <div class="wxrds">
     
-    {#each $allLoadedWxrds as wxrd, i}
+    {#each $allLoadedWxrds as wxrdRef, i}
 
     <p>test</p>
 
-    <WxrdCard {wxrd} />
+    <WxrdCard wxrd={wxrdRef.wxrd} />
 
     <!-- TODO: make this card work, data isn't displaying properly but it is returning, need to play with console log and some different values to see what we can get working, soo close-->
     

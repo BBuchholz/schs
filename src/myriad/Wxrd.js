@@ -152,15 +152,26 @@ export class Wxrd {
 
     if(!uuidToGet){
 
+      // console.log('no uuid supplied, assuming alias lookup for self');
       uuidToGet = this.getUuid();
-
+      // console.log('uuid to lookup set to <' + uuidToGet + '>');
     }
 
-    if(!uuidToGet in this.aliases){
+    let foundAlias = '[ALIAS NOT FOUND FOR <' + uuidToGet + '>]';
 
-      return '[ALIAS NOT FOUND FOR <' + uuidToGet + '>]';
+    try{
+
+      if(this.aliases[uuidToGet]){
+
+        foundAlias = this.aliases[uuidToGet];
+      }
+
+    }catch(err){
+
+      foundAlias = 'Error retrieving alias: ' + err;
     }
 
-    return this.aliases[uuidToGet];
+    return foundAlias;
+
   }
 }
