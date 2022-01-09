@@ -65,7 +65,7 @@
 
       const processed = processResponseObject(response.data);
 
-      $allLoadedWxrds = [...$allLoadedWxrds, processed];
+      $allLoadedWxrds = [processed, ...$allLoadedWxrds];
 
       // set app state
     }).catch((error) => {
