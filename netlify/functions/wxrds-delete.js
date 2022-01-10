@@ -9,6 +9,7 @@ const client = new faunadb.Client({
 
 exports.handler = (event, context, callback) => {
   
+  console.log('parsing event path', event.path)
   const id = getId(event.path);
   console.log(`Function 'wxrds-delete' invoked. Delete id: ${id}`);
   

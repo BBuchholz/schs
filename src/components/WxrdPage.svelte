@@ -25,29 +25,48 @@
     })
   }
 
+  function getWxrdId(responseObj){
+
+    console.log('getting wxrd id from response obj', responseObj);
+    if(!responseObj.ref){
+      return null;
+    }
+    return responseObj.ref['@ref'].id;
+  }
+
   function processResponseObject(responseObj){
 
-    const strRespObj = JSON.stringify(responseObj);
+    const strRespObjData = JSON.stringify(responseObj.data);
 
-    console.log('processing response object...', strRespObj);
+    console.log('processing response object data...', strRespObjData);
 
     let processed = {
       wxrd: null,
-      ref: null
+      id: null
     };
 
     try{
       
-      processed.wxrd = djehuti.importWxrdFromJson(strRespObj);
+      processed.id = getWxrdId(responseObj);
     
     }catch(err){
 
-      console.log("error processing response object: " + err);
+      console.log("error processing response object for id: " + err);
+
+    }
+
+    try{
+      
+      processed.wxrd = djehuti.importWxrdFromJson(strRespObjData);
+    
+    }catch(err){
+
+      console.log("error processing response object for wxrd: " + err);
 
     }
 
     return processed;
-
+ 
   }
 
   function createANewWxrd(){
@@ -63,7 +82,7 @@
 
       console.log('API response', response)
 
-      const processed = processResponseObject(response.data);
+      const processed = processResponseObject(response);
 
       $allLoadedWxrds = [processed, ...$allLoadedWxrds];
 
@@ -101,7 +120,7 @@
       for(const responseObj of response){
 
         const processed = 
-          processResponseObject(responseObj.data);
+          processResponseObject(responseObj);
 
           if(processed != null){
 
@@ -135,7 +154,7 @@
 
     <p>test</p>
 
-    <WxrdCard wxrd={wxrdRef.wxrd} />
+    <WxrdCard wxrd={wxrdRef.wxrd} dataId={wxrdRef.id}/>
 
     <!-- TODO: make this card work, data isn't displaying properly but it is returning, need to play with console log and some different values to see what we can get working, soo close-->
     
