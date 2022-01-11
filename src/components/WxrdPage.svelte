@@ -1,9 +1,10 @@
 <script>
 
-  import { allLoadedWxrds } from '../stores.js';
+  import { allLoadedWxrds, displayMode } from '../stores.js';
   import { readAll } from '../api/wxrds-api.js';
 
   import WxrdCard from './WxrdCard.svelte';
+  import NavBarBottom from './NavBarBottom.svelte';
 
   import { Djehuti } from '../myriad/Djehuti.js';
 
@@ -143,6 +144,12 @@
 
 <div>
 
+  <p>
+  
+    Display Mode: {$displayMode}
+  
+  </p>
+  
   <button on:click={createANewWxrd}>Test Create Wxrd</button>
   <button on:click={loadWxrds}>Load Wxrds</button>
 
@@ -161,6 +168,8 @@
     {/each}
 
   </div>
+
+  <NavBarBottom />
 
 </div>
 
