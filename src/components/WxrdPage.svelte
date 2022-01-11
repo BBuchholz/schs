@@ -27,7 +27,7 @@
 
   function getWxrdId(responseObj){
 
-    console.log('getting wxrd id from response obj', responseObj);
+    // console.log('getting wxrd id from response obj', responseObj);
     if(!responseObj.ref){
       return null;
     }
@@ -38,7 +38,7 @@
 
     const strRespObjData = JSON.stringify(responseObj.data);
 
-    console.log('processing response object data...', strRespObjData);
+    // console.log('processing response object data...', strRespObjData);
 
     let processed = {
       wxrd: null,
