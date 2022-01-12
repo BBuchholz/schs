@@ -5,10 +5,10 @@
 </script>
 
 <ul>
-  <li><a class:active={$displayMode == 'Text'} href="#" on:click={() => $displayMode = 'Text'}>Text</a></li>
-  <li><a class:active={$displayMode == 'Piano'} href="#" on:click={() => $displayMode = 'Piano'}>Piano</a></li>
-  <li><a class:active={$displayMode == 'Drum Map'} href="#" on:click={() => $displayMode = 'Drum Map'}>Drum Map</a></li>
-  <li><a class:active={$displayMode == 'About'} href="#" on:click={() => $displayMode = 'About'}>About</a></li>
+  <li><a class:active={$displayMode == 'Text'} href="#text" on:click={() => $displayMode = 'Text'}>Text</a></li>
+  <li><a class:active={$displayMode == 'Piano'} href="#piano" on:click={() => $displayMode = 'Piano'}>Piano</a></li>
+  <li><a class:active={$displayMode == 'Drum Map'} href="#drum-map" on:click={() => $displayMode = 'Drum Map'}>Drum Map</a></li>
+  <li><a class:active={$displayMode == 'About'} href="#about" on:click={() => $displayMode = 'About'}>About</a></li>
 </ul>
 
 <style>

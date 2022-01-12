@@ -10,12 +10,18 @@
 
   const djehuti = new Djehuti();
 
-  const wxrds = [];
+  let newWxrdValue = `
+
+
+initializedAt: ` + 
+    new Date().toISOString() + `
+tags: `;
+
 
   // Function using fetch to POST to our API endpoint
-  function createThisWxrd(multiLineInput) {
+  function createThisWxrd() {
 
-    const newWxrd = djehuti.createWxrd(multiLineInput);
+    const newWxrd = djehuti.createWxrd(newWxrdValue);
     console.log('wxrd created', newWxrd);
 
     return fetch('/api/wxrds-create', {
@@ -94,20 +100,6 @@
 
   }
 
-  // function dumpProps(obj, obj_name) {
-  //   let result = '';
-  //   for (let i in obj) {
-  //     result += obj_name + '.' + i + ' = ' + obj[i];
-  //   }
-  //   return result;
-  // }
-
-  // // const getMemories = async () => {
-  // //     const resp = await fetch('/api/wxrds-read-all')
-  // //     const data = await resp.json()
-  // //     wxrds = data;
-  // //   }
-
   function loadWxrds() {
 
     const allWxrds = readAll();
@@ -149,11 +141,17 @@
     Display Mode: {$displayMode}
   
   </p>
+
+  <p>
   
+    <textarea 
+      bind:value={newWxrdValue}
+      rows="5"></textarea>
+    
+  </p>
+
   <button on:click={createANewWxrd}>Test Create Wxrd</button>
   <button on:click={loadWxrds}>Load Wxrds</button>
-
-
 
   <div class="wxrds">
     
@@ -181,6 +179,11 @@
     align-items: center;
     justify-content: space-around;
     background: #0000ff;
+  }
+
+  textarea {
+    width: 100%;
+
   }
 
 </style>
