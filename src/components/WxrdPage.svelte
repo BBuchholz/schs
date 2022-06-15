@@ -134,7 +134,7 @@ tags: `;
 
 </script>
 
-<div>
+<div class="main">
 
   <p>
   
@@ -167,23 +167,33 @@ tags: `;
 
   </div>
 
-  <NavBarBottom />
+  <!-- <NavBarBottom /> -->
 
 </div>
 
 <style>
 
-  .wxrds {
+  .main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+  }
+
+  .wxrds {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 20px;
+    align-items: center;
     justify-content: space-around;
-    background: #0000ff;
+    background-color: #282c34;
   }
 
   textarea {
-    width: 100%;
-
+    width: 80vw;
+    box-sizing: border-box;
+    margin: 10px;
   }
 
 </style>
