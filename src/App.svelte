@@ -13,6 +13,7 @@
 
   import Alexandria from './Alexandria.svelte';
   import WxrdPage from './components/WxrdPage.svelte';
+  import MDWxrdPage from './md/MDWxrdPage.svelte';
   import LeMarchand from './LeMarchand.svelte';
 
 </script>
@@ -41,17 +42,21 @@
       </div>
 
 
-      {#if $passPhrase === 'learn'}
+      {#if $passPhrase === 'read'}
 
         <Alexandria />
+
+      {:else if $passPhrase === 'sip'}
+
+        <WxrdPage />
+
+      {:else if $passPhrase === 'promulgate'}
+
+        <MDWxrdPage />
 
       {:else if $passPhrase === 'lament'}
 
         <LeMarchand />
-
-      {:else if $passPhrase === 'bedrock'}
-
-        <WxrdPage />
 
       {:else}
 

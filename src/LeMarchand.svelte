@@ -46,18 +46,20 @@
     });
   }
 
-  function handleAlexandriaClick(){
-    $passPhrase = 'learn';
-  }
-  
-  function handleDaedalusClick(){
-    $passPhrase = 'craft';
+  function handleAewonicAlexandrianClick(){
+
+    $passPhrase = 'read';
   } 
 
-  function handleWxrdPageClick(){
+  function handleWxrdsWellClick(){
 
-    $passPhrase = 'bedrock';
+    $passPhrase = 'sip';
 
+  }
+
+  function handleMyriadsMatrixClick(){
+
+    $passPhrase = 'promulgate';
   } 
 
 </script>
@@ -66,19 +68,30 @@
     
     <div class="facet-face">
       <a 
-        href="#learn"
-        on:click={handleAlexandriaClick}
+        href="#read"
+        on:click={handleAewonicAlexandrianClick}
       > 
-        Alexandria
+        A
       </a>
+      <span class="tooltip">Aewonic Alexandrian</span>
     </div>
     <div class="facet-face">
       <a 
-        href="#bedrock"
-        on:click={handleWxrdPageClick}
+        href="#sip"
+        on:click={handleWxrdsWellClick}
       > 
-        WxrdPage
+        W
       </a>
+      <span class="tooltip">Wxrd's Well</span>
+    </div>
+    <div class="facet-face">
+      <a 
+        href="#promulgate"
+        on:click={handleMyriadsMatrixClick}
+      > 
+        M
+      </a>
+      <span class="tooltip">Myriad's Matrix</span>
     </div>
   
 </div>
@@ -96,8 +109,24 @@
 .facet-face {
   margin: 10px;
   padding: 10px;
+  font-size: 40px;
   border: thin solid;
   border-radius: 10px;
+}
+
+.facet-face:hover .tooltip {
+  display:block;
+}
+
+.tooltip {
+  display: none;
+    background-color: #282c34;
+    padding: 20px;
+    font-size: 20px;
+    margin-left: -60px; /* moves the tooltip over */
+    margin-top: 20px; /* moves it down */
+    position: absolute;
+    z-index: 1000;
 }
 
 </style>
