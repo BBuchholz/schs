@@ -1,6 +1,6 @@
 <script>
 
-  import { allLoadedWxrds } from '../stores.js';
+  import { allLoadedMarkDown } from './stores.js';
   import { deleteWxrd } from '../api/wxrds-api.js';
 
   export let wxrd = null;
@@ -9,7 +9,7 @@
   function filterOutCurrentDataId() {
     let filtered = [];
 
-    for(const wxrdRef of $allLoadedWxrds){
+    for(const wxrdRef of $allLoadedMarkDown){
       if(wxrdRef.id != dataId){
         // console.log(wxrdRef.id + ' is not ' + dataId + ', adding...');
         filtered.push(wxrdRef);
@@ -25,7 +25,7 @@
 
       let filtered = filterOutCurrentDataId();
       // console.log(filtered);
-      $allLoadedWxrds = filtered;
+      $allLoadedMarkDown = filtered;
 
     }).catch((e) => {
       console.log(`There was an error removing ${dataId}`, e)

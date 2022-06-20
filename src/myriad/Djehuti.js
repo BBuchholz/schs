@@ -11,6 +11,8 @@ export class Djehuti {
 		return new Wxrd(multiLineInput);
 	}
 
+	// TODO: Mimic createWxrd to implement createMarkDown
+
 	importWxrdFromJson(jsonString) {
 
 		if(!this.hasJsonStructure(jsonString)){

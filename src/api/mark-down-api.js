@@ -1,5 +1,11 @@
 // NB: /api/ prefix used below is mapped in netlify.toml (cf.)
 
+// TODO: this was copied verbatim from wxrds-api.js,
+// needs to be modified for markdown
+
+// TODO: all markdown methods should be in Djehuti, instead of
+//       D.Controller (we are deprecating D.Controller entity)
+// MIMIC: pandaemonium.studio implementation for this mod
 
   import DjehutiController from '../myriad/DjehutiController.js';
 

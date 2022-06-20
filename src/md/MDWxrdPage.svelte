@@ -4,18 +4,12 @@
   import { readAll } from '../api/mark-down-api.js';
 
   import MarkDownCard from './MarkDownCard.svelte';
-  // import NavBarBottom from './NavBarBottom.svelte';
 
   import { Djehuti } from '../myriad/Djehuti.js';
 
   const djehuti = new Djehuti();
 
-  let newMarkDownValue = `
-
-
-initializedAt: ` + 
-    new Date().toISOString() + `
-tags: `;
+  let newMarkDownValue = 'Test';
 
 
   // Function using fetch to POST to our API endpoint
@@ -132,7 +126,7 @@ tags: `;
   }
 
 
-</script>
+</script> 
 
 <div class="main">
 
