@@ -46,8 +46,11 @@ export const headerQuote = derived(
 
 		}
 
-		if ($passPhrase === 'leAC'){
+		if ($passPhrase === 'promulgate'){
 
+			quote.content = 'This was Baphomet. This diced and divided thing.';
+
+			quote.source = 'Clive Barker, Cabal';
 		}
 
 		if ($passPhrase === 'daedalusLab') {

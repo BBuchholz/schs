@@ -13,7 +13,7 @@
 
   import Alexandria from './Alexandria.svelte';
   import WxrdPage from './components/WxrdPage.svelte';
-  import MDWxrdPage from './md/MDWxrdPage.svelte';
+  import MDMDM from './md/MDMDM.svelte';
   import LeMarchand from './LeMarchand.svelte';
 
 </script>
@@ -52,7 +52,7 @@
 
       {:else if $passPhrase === 'promulgate'}
 
-        <MDWxrdPage />
+        <MDMDM />
 
       {:else if $passPhrase === 'lament'}
 

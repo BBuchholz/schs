@@ -11,6 +11,22 @@
 
   let newMarkDownValue = 'Test';
 
+  // TODO: NOT SURE WHERE I WANT THESE YET BUT I WANT THESE SOMEWHERE
+
+  // “The un-people, the anti-tribe, humanity’s sack unpicked and sewn together again with the moon inside.”
+  // ― Clive Barker, Cabal
+
+  //   “All Darkness was one darkness in the end. Of heart or Heavens, one Darkness.”
+  // ― Clive Barker, Cabal
+
+  // “Here was a place sacred to the dead, who were not the living ceased, but almost another species, requiring rites and prayers that belonged uniquely to them.”
+  // ― Clive Barker, Cabal
+
+  //   “It was bad enough that these creatures had children and art; that they might also have vision was too dangerous a thought to entertain.”
+  // ― Clive Barker, Cabal
+
+  // 
+  // ― 
 
   // Function using fetch to POST to our API endpoint
   function createThisMarkDown() {
