@@ -46,7 +46,7 @@ export const headerQuote = derived(
 
 		}
 
-		if ($passPhrase === 'promulgate'){
+		if ($passPhrase === 'matriculate'){
 
 			quote.content = 'This was Baphomet. This diced and divided thing.';
 

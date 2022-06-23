@@ -46,20 +46,25 @@
     });
   }
 
+  function handleParadisoClick(){
+
+    $passPhrase = 'promulgate';
+  } 
+
   function handleAewonicAlexandrianClick(){
 
-    $passPhrase = 'read';
+    $passPhrase = 'animatus';
   } 
 
   function handleWxrdsWellClick(){
 
-    $passPhrase = 'sip';
+    $passPhrase = 'woander';
 
   }
-
+ 
   function handleMyriadsMatrixClick(){
 
-    $passPhrase = 'promulgate';
+    $passPhrase = 'matriculate';
   } 
 
 </script>
@@ -68,7 +73,16 @@
     
     <div class="facet-face">
       <a 
-        href="#read"
+        href="#promulgate"
+        on:click={handleParadisoClick}
+      > 
+        P
+      </a>
+      <span class="tooltip">Paradiso</span>
+    </div>
+    <div class="facet-face">
+      <a 
+        href="#animatus"
         on:click={handleAewonicAlexandrianClick}
       > 
         A
@@ -77,7 +91,7 @@
     </div>
     <div class="facet-face">
       <a 
-        href="#sip"
+        href="#woander"
         on:click={handleWxrdsWellClick}
       > 
         W
@@ -86,7 +100,7 @@
     </div>
     <div class="facet-face">
       <a 
-        href="#promulgate"
+        href="#matriculate"
         on:click={handleMyriadsMatrixClick}
       > 
         M

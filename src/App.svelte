@@ -11,10 +11,16 @@
 
   import MyriadNotification from './MyriadNotification.svelte';
 
+  import Paradiso from './pip/Paradiso.svelte';
   import Alexandria from './Alexandria.svelte';
   import WxrdPage from './components/WxrdPage.svelte';
-  import MDMDM from './md/MDMDM.svelte';
   import LeMarchand from './LeMarchand.svelte';
+  import MDMDM from './md/MDMDM.svelte';
+  
+  function handleLeMarchandClick(){
+
+    $passPhrase = 'lament';
+  } 
 
 </script>
 
@@ -42,21 +48,25 @@
       </div>
 
 
-      {#if $passPhrase === 'read'}
+      {#if $passPhrase === 'promulgate'}
+
+        <Paradiso />
+
+      {:else if $passPhrase === 'animatus'}
 
         <Alexandria />
 
-      {:else if $passPhrase === 'sip'}
+      {:else if $passPhrase === 'woander'}
 
         <WxrdPage />
-
-      {:else if $passPhrase === 'promulgate'}
-
-        <MDMDM />
 
       {:else if $passPhrase === 'lament'}
 
         <LeMarchand />
+
+      {:else if $passPhrase === 'matriculate'}
+
+        <MDMDM />
 
       {:else}
 
@@ -65,9 +75,12 @@
       {/if}
 
       <div class='footer'>
-        
-        a Temple Cathedral Tomb production
-
+        <a 
+        href="#lament"
+        on:click={handleLeMarchandClick}
+        > 
+          a Temple Cathedral Tomb production
+        </a>
       </div>
 
     </main>
