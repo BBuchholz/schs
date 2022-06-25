@@ -1,4 +1,5 @@
 import { Wxrd } from './Wxrd';
+import { MDWxrd } from './MDWxrd';
 
 export class Djehuti {
 
@@ -7,8 +8,9 @@ export class Djehuti {
 	}
 
 	createWxrd(multiLineInput) {
-
-		return new Wxrd(multiLineInput);
+ 
+		// return new Wxrd(multiLineInput);
+		return new MDWxrd(multiLineInput);
 	}
 
 	// TODO: Mimic createWxrd to implement createMarkDown
