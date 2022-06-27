@@ -14,9 +14,6 @@ export class MDWxrd {
     wxrdUuid: INITIAL_WXRD_UUID,
   };
 
-  aliases = {};
-  members = {};
-
   constructor(initializationData){
 
     if (typeof initializationData === 'string'
@@ -26,7 +23,7 @@ export class MDWxrd {
 
       this.initializeUuid();
       this.initializeCreatedAt();
-      this.setAlias(this.getUuid(), initializationData);
+      // this.setAlias(this.getUuid(), initializationData);
       this.metaData.wxrdValue = initializationData;
       
 
@@ -75,10 +72,10 @@ export class MDWxrd {
     }
   }
 
-  setAlias(uuidKey, aliasValue) {
+  // setAlias(uuidKey, aliasValue) {
 
-    this.aliases[uuidKey] = aliasValue;
-  }
+  //   this.aliases[uuidKey] = aliasValue;
+  // }
 
   getAlias(uuidToGet) {
 
