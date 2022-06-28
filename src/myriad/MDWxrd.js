@@ -24,14 +24,14 @@ export class MDWxrd {
       this.initializeUuid();
       this.initializeCreatedAt();
       // this.setAlias(this.getUuid(), initializationData);
-      this.metaData.wxrdValue = initializationData;
+      this.markDown = initializationData;
       
 
     } else if ('metaData' in initializationData) {
 
       this.metaData = initializationData.metaData;
-      this.aliases = initializationData.aliases;
-      this.members = initializationData.members;
+      // this.aliases = initializationData.aliases;
+      // this.members = initializationData.members;
 
     } else {
 
@@ -77,30 +77,30 @@ export class MDWxrd {
   //   this.aliases[uuidKey] = aliasValue;
   // }
 
-  getAlias(uuidToGet) {
+  // getAlias(uuidToGet) {
 
-    if(!uuidToGet){
+  //   if(!uuidToGet){
 
-      // console.log('no uuid supplied, assuming alias lookup for self');
-      uuidToGet = this.getUuid();
-      // console.log('uuid to lookup set to <' + uuidToGet + '>');
-    }
+  //     // console.log('no uuid supplied, assuming alias lookup for self');
+  //     uuidToGet = this.getUuid();
+  //     // console.log('uuid to lookup set to <' + uuidToGet + '>');
+  //   }
 
-    let foundAlias = '[ALIAS NOT FOUND FOR <' + uuidToGet + '>]';
+  //   let foundAlias = '[ALIAS NOT FOUND FOR <' + uuidToGet + '>]';
 
-    try{
+  //   try{
 
-      if(this.aliases[uuidToGet]){
+  //     if(this.aliases[uuidToGet]){
 
-        foundAlias = this.aliases[uuidToGet];
-      }
+  //       foundAlias = this.aliases[uuidToGet];
+  //     }
 
-    }catch(err){
+  //   }catch(err){
 
-      foundAlias = 'Error retrieving alias: ' + err;
-    }
+  //     foundAlias = 'Error retrieving alias: ' + err;
+  //   }
 
-    return foundAlias;
+  //   return foundAlias;
 
-  }
+  // }
 }

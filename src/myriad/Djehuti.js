@@ -9,7 +9,11 @@ export class Djehuti {
 
 	createWxrd(multiLineInput) {
  
-		// return new Wxrd(multiLineInput);
+		return new Wxrd(multiLineInput);
+	}
+
+	createMDWxrd(multiLineInput) {
+ 
 		return new MDWxrd(multiLineInput);
 	}
 
