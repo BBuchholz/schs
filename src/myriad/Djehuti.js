@@ -14,8 +14,34 @@ export class Djehuti {
 
 	createMDWxrd(multiLineInput) {
  
-		return new MDWxrd(multiLineInput);
+ 		let newWxrd = new MDWxrd(multiLineInput);
+
+ 		this.parseMetaData(newWxrd);
+
+		return newWxrd;
 	}
+
+	hasFrontMatter(multiLineInput) {
+
+		let found = false;
+
+		if(multiLineInput.trim().startsWith('---')){
+			
+			found = true;
+		}
+
+		return found;
+	}
+
+	parseMetaData(wxrd) {
+
+		if(this.hasFrontMatter(wxrd.markDown)){
+
+			//TODO: GET THIS TO PASS PROPERLY
+			// wxrd.metaData.testField = 'test value';	
+		}
+	}
+
 
 	// TODO: Mimic createWxrd to implement createMarkDown
 

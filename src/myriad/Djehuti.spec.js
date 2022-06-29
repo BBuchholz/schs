@@ -13,6 +13,42 @@ it('should have at least one spec', () => {
 
 });
 
+
+it('should create a basic MDWrd if no metaData is found', () => {
+
+  const inputData = "Some random test data without any metadata";
+  const createdWxrd = djehuti.createMDWxrd(inputData);
+
+  expect(createdWxrd.markDown).toBe(inputData);
+
+});
+
+it('should create a parsed MDWrd if metaData is found', () => {
+
+  const inputData = `
+
+---
+
+testField: test value
+anotherTestField: another value
+
+---
+
+Here is some text without any data in it, as if it was already parsed
+
+`;
+
+  //WE WANT TO HAVE PARSING BE A FUNCTION OF DJEHUTI AND 
+  //FOR IT TO GENERATE A NEW WXRD WITH A NEW UUID SO EACH
+  //PARSED WXRD UUID IS UNIQUE TO THAT PARSING EVEN IN EVENT
+  //OF ERRORS
+  const createdWxrd = djehuti.createMDWxrd(inputData);
+
+  expect(createdWxrd.markDown).toBe(inputData);
+  expect(createdWxrd.metaData.testField).toBe("test value");
+
+});
+
 it('should create wxrd from multiline string input', () => {
 
   const multiLineInput = `Something I wrote down to remember... 
