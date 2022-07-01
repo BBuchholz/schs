@@ -44,8 +44,13 @@ Here is some text without any data in it, as if it was already parsed
   //OF ERRORS
   const createdWxrd = djehuti.createMDWxrd(inputData);
 
+  const expectedMetaData = {
+    testField: "test value",
+    anotherTestField: "another value"
+  };
+
   expect(createdWxrd.markDown).toBe(inputData);
-  expect(createdWxrd.metaData.testField).toBe("test value");
+  expect(createdWxrd.metaData).toBe(expectedMetaData);
 
 });
 

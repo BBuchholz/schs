@@ -21,7 +21,7 @@ export class Djehuti {
 		return newWxrd;
 	}
 
-	hasFrontMatter(multiLineInput) {
+	firstLineIsADivider(multiLineInput) {
 
 		let found = false;
 
@@ -35,11 +35,35 @@ export class Djehuti {
 
 	parseMetaData(wxrd) {
 
-		if(this.hasFrontMatter(wxrd.markDown)){
+		if(this.firstLineIsADivider(wxrd.markDown)){
 
-			//TODO: GET THIS TO PASS PROPERLY
-			// wxrd.metaData.testField = 'test value';	
+			let inFrontMattter = true;
+
+			const lines = this.splitToLines(wxrd.markDown);
+
+			for (const line of lines){
+
+				if(this.firstLineIsADivider(line)){
+
+					// we found the closing divider
+					inFrontMattter = false;
+				}
+
+				if(inFrontMattter){
+
+					const metaKey = line.slice(0, line.indexOf(':'));
+					const metaValue = line.slice(line.indexOf(':') + 1);
+					wxrd.metaData[metaKey] = metaValue;					
+				}
+
+			}
+
 		}
+	}
+
+	splitToLines(multiLineInput) {
+
+		return multiLineInput.split('\n');
 	}
 
 
