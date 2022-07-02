@@ -37,7 +37,7 @@ export class Djehuti {
 
 		if(this.startsWithADivider(wxrd.markDown)){
 
-			console.log('found opening divider');
+			// console.log('found opening divider');
 
 			// set to false here, will flip to true on first
 			// line in for loop below, then back to false
@@ -46,13 +46,13 @@ export class Djehuti {
 
 			const lines = this.splitToLines(wxrd.markDown);
 
-			console.log('lines found: ' + lines.length);
+			// console.log('lines found: ' + lines.length);
 
 			for (const line of lines){
 
 				if(this.startsWithADivider(line)){
 
-					console.log('closing divider found');
+					// console.log('closing divider found');
 
 					// we found a divider, toggle status
 					// which was initialized to false above
@@ -69,7 +69,7 @@ export class Djehuti {
 
 					if(trimmedLine){
 
-						console.log('processing line: ' + trimmedLine);
+						// console.log('processing line: ' + trimmedLine);
 
 						const metaKey = trimmedLine.slice(0, trimmedLine.indexOf(':')).trim();
 						const metaValue = trimmedLine.slice(trimmedLine.indexOf(':') + 1).trim();
