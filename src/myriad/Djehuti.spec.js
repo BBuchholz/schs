@@ -50,7 +50,7 @@ Here is some text without any data in it, as if it was already parsed
   };
 
   expect(createdWxrd.markDown).toBe(inputData);
-  expect(createdWxrd.metaData).toBe(expectedMetaData);
+  expect(createdWxrd.metaData).toStrictEqual(expectedMetaData);
 
 });
 

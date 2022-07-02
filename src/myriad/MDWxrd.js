@@ -9,9 +9,9 @@ const INITIAL_WXRD_UUID = '[wxrdUuid NOT SET]';
 export class MDWxrd {
 
   metaData = {
-    wxrdValue: '',
-    wxrdType: 'Wxrd',
-    wxrdUuid: INITIAL_WXRD_UUID,
+    // wxrdValue: '',
+    // wxrdType: 'Wxrd',
+    // wxrdUuid: INITIAL_WXRD_UUID,
   };
 
   constructor(initializationData){
@@ -21,8 +21,8 @@ export class MDWxrd {
 
       // console.log('initializing...');
 
-      this.initializeUuid();
-      this.initializeCreatedAt();
+      // this.initializeUuid();
+      // this.initializeCreatedAt();
       // this.setAlias(this.getUuid(), initializationData);
       this.markDown = initializationData;
       
@@ -30,6 +30,7 @@ export class MDWxrd {
     } else if ('metaData' in initializationData) {
 
       this.metaData = initializationData.metaData;
+      this.markDown = initializationData.markDown;
       // this.aliases = initializationData.aliases;
       // this.members = initializationData.members;
 

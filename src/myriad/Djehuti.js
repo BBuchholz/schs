@@ -21,7 +21,7 @@ export class Djehuti {
 		return newWxrd;
 	}
 
-	firstLineIsADivider(multiLineInput) {
+	startsWithADivider(multiLineInput) {
 
 		let found = false;
 
@@ -35,25 +35,48 @@ export class Djehuti {
 
 	parseMetaData(wxrd) {
 
-		if(this.firstLineIsADivider(wxrd.markDown)){
+		if(this.startsWithADivider(wxrd.markDown)){
 
-			let inFrontMattter = true;
+			console.log('found opening divider');
+
+			// set to false here, will flip to true on first
+			// line in for loop below, then back to false
+			// when it finds the next divider
+			let inFrontMattter = false; 
 
 			const lines = this.splitToLines(wxrd.markDown);
 
+			console.log('lines found: ' + lines.length);
+
 			for (const line of lines){
 
-				if(this.firstLineIsADivider(line)){
+				if(this.startsWithADivider(line)){
 
-					// we found the closing divider
-					inFrontMattter = false;
+					console.log('closing divider found');
+
+					// we found a divider, toggle status
+					// which was initialized to false above
+					// if its the first we'll become true
+					// if its the second it'll become false
+					inFrontMattter = !inFrontMattter;
 				}
 
 				if(inFrontMattter){
 
-					const metaKey = line.slice(0, line.indexOf(':'));
-					const metaValue = line.slice(line.indexOf(':') + 1);
-					wxrd.metaData[metaKey] = metaValue;					
+					// ignore divider lines and empty lines
+
+					const trimmedLine = line.replace(/-/g, '').trim();
+
+					if(trimmedLine){
+
+						console.log('processing line: ' + trimmedLine);
+
+						const metaKey = trimmedLine.slice(0, trimmedLine.indexOf(':')).trim();
+						const metaValue = trimmedLine.slice(trimmedLine.indexOf(':') + 1).trim();
+
+						wxrd.metaData[metaKey] = metaValue;											
+					}
+
 				}
 
 			}
