@@ -31,7 +31,7 @@
   // Function using fetch to POST to our API endpoint
   function createThisMarkDown() {
 
-    const newMarkDown = djehuti.createMarkDown(newMarkDownValue);
+    const newMarkDown = djehuti.createMDWxrd(newMarkDownValue);
     console.log('mark down created', newMarkDown);
 
     return fetch('/api/mark-down-create', {
