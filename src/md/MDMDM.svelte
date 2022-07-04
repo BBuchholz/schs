@@ -1,7 +1,7 @@
 <script>
 
   import { allLoadedMarkDown, displayMode } from './stores.js';
-  import { readAll } from '../api/mark-down-api.js';
+  import { readAll } from '../api/wxrds-api.js';
 
   import MarkDownCard from './MarkDownCard.svelte';
 
@@ -34,7 +34,7 @@
     const newMarkDown = djehuti.createMDWxrd(newMarkDownValue);
     console.log('mark down created', newMarkDown);
 
-    return fetch('/api/mark-down-create', {
+    return fetch('/api/wxrds-create', {
       body: JSON.stringify(newMarkDown),
       method: 'POST'
     }).then(response => {
