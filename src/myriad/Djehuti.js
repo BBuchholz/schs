@@ -104,6 +104,18 @@ export class Djehuti {
 		return new Wxrd(parsed);
 	}
 
+	importMDWxrdFromJson(jsonString) {
+
+		if(!this.hasJsonStructure(jsonString)){
+
+			throw "can't import json from non-json string";
+		}
+
+		const parsed = JSON.parse(jsonString);
+
+		return new MDWxrd(parsed);
+	}
+
 	hasJsonStructure(str) {
 	
 		// adapted from: https://stackoverflow.com/a/52799327/670768

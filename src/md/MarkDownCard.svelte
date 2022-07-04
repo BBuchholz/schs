@@ -42,8 +42,24 @@
 
   <div class="wxrd-value" data-id={dataId}>
 
-    Alias: {wxrd.getAlias()}
-    DataId: {dataId}
+    <div class="wxrd-section">
+
+      OBJ: {JSON.stringify(wxrd)}
+
+    </div>
+
+    <div class="wxrd-section">
+
+      MD: {JSON.stringify(wxrd.markdown)}
+
+    </div>
+
+    <div class="wxrd-section">
+
+      DataId: {dataId}
+
+    </div>
+
     
   </div>
 
@@ -78,6 +94,11 @@
     background: teal;
     display:  inline-block;
     justify-content: space-around;
+  }
+
+  .wxrd-section {
+    margin: 10px;
+    padding: 10px;
   }
 
 </style>

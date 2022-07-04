@@ -74,7 +74,7 @@
 
     try{
       
-      processed.markdown = djehuti.importMarkDownFromJson(strRespObjData);
+      processed.markdown = djehuti.importMDWxrdFromJson(strRespObjData);
     
     }catch(err){
 
@@ -171,11 +171,11 @@
 
   <div class="MarkDown">
     
-    {#each $allLoadedMarkDown as MarkDownRef, i}
+    {#each $allLoadedMarkDown as wxrdObj, i}
 
     <p>test</p>
 
-    <MarkDownCard MarkDown={MarkDownRef.MarkDown} dataId={MarkDownRef.id}/>
+    <MarkDownCard wxrd={wxrdObj} dataId={wxrdObj.id}/>
 
     <!-- TODO: make this card work, data isn't displaying properly but it is returning, need to play with console log and some different values to see what we can get working, soo close-->
     
