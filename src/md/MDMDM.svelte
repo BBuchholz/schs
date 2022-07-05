@@ -58,23 +58,23 @@
     // console.log('processing response object data...', strRespObjData);
 
     let processed = {
-      markdown: null,
-      id: null
+      wxrd: null,
+      dataId: null
     };
 
     try{
       
-      processed.id = getMarkDownId(responseObj);
+      processed.dataId = getMarkDownId(responseObj);
     
     }catch(err){
 
-      console.log("error processing response object for id: " + err);
+      console.log("error processing response object for dataId: " + err);
 
     }
 
     try{
       
-      processed.markdown = djehuti.importMDWxrdFromJson(strRespObjData);
+      processed.wxrd = djehuti.importMDWxrdFromJson(strRespObjData);
     
     }catch(err){
 
@@ -175,7 +175,7 @@
 
     <p>test</p>
 
-    <MarkDownCard wxrd={wxrdObj} dataId={wxrdObj.id}/>
+    <MarkDownCard {wxrdObj} />
 
     <!-- TODO: make this card work, data isn't displaying properly but it is returning, need to play with console log and some different values to see what we can get working, soo close-->
     

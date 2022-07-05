@@ -3,14 +3,15 @@
   import { allLoadedMarkDown } from './stores.js';
   import { deleteWxrd } from '../api/wxrds-api.js';
 
-  export let wxrd = null;
-  export let dataId = null;
+  export let wxrdObj = null;
+  let displayObject = false;
+  let displayDataId = false;
 
   function filterOutCurrentDataId() {
     let filtered = [];
 
     for(const wxrdRef of $allLoadedMarkDown){
-      if(wxrdRef.id != dataId){
+      if(wxrdRef.id != wxrdObj.dataId){
         // console.log(wxrdRef.id + ' is not ' + dataId + ', adding...');
         filtered.push(wxrdRef);
       }
@@ -20,16 +21,26 @@
   }
   
   function deleteThisWxrd() {
-    deleteWxrd(dataId).then(() => {
-      console.log(`deleted wxrd id ${dataId}`)
+    deleteWxrd(wxrdObj.dataId).then(() => {
+      console.log(`deleted wxrd id ${wxrdObj.dataId}`)
 
       let filtered = filterOutCurrentDataId();
       // console.log(filtered);
       $allLoadedMarkDown = filtered;
 
     }).catch((e) => {
-      console.log(`There was an error removing ${dataId}`, e)
+      console.log(`There was an error removing ${wxrdObj.dataId}`, e)
     });
+  }
+
+  function toggleObject(){
+
+    displayObject = !displayObject;
+  }
+
+  function toggleDataId(){
+    
+    displayDataId = !displayDataId;
   }
 
 </script>
@@ -38,51 +49,64 @@
 
 <div class="wxrd-card">
 
-{#if wxrd !== null && dataId !== null}
+  {#if wxrdObj !== null && wxrdObj.dataId !== null}
 
-  <div class="wxrd-value" data-id={dataId}>
+    <div class="wxrd-value" data-id={wxrdObj.dataId}>
 
-    <div class="wxrd-section">
+      {#if displayObject}
 
-      OBJ: {JSON.stringify(wxrd)}
+        <div class="wxrd-section wxrd-object">
 
+          OBJ: {JSON.stringify(wxrdObj.wxrd)}
+
+        </div>
+
+      {/if}
+
+      <div class="wxrd-section wxrd-mark-down">
+
+        {wxrdObj.wxrd.markDown}
+
+      </div>
+
+      {#if displayDataId }
+
+        <div class="wxrd-section wxrd-data-id">
+
+          DataId: {wxrdObj.dataId}
+
+        </div>
+
+      {/if}
+
+      
     </div>
 
-    <div class="wxrd-section">
+  {:else if wxrdObj.dataId !== null}
 
-      MD: {JSON.stringify(wxrd.markdown)}
+    <div class="wxrd-value" data-id={wxrdObj.dataId}>
 
+      [NO WXRD FOUND]
+      DataId: {wxrdObj.dataId}
+      
     </div>
 
-    <div class="wxrd-section">
+  {:else}
 
-      DataId: {dataId}
+    DataId is null
 
-    </div>
+  {/if}
 
-    
-  </div>
+  {#if wxrdObj.dataId !== null}
 
-{:else if dataId !== null}
+    <button on:click={deleteThisWxrd}>Delete This Wxrd</button>
 
-  <div class="wxrd-value" data-id={dataId}>
+  {/if}
 
-    [NO WXRD FOUND]
-    DataId: {dataId}
-    
-  </div>
 
-{:else}
+  <button on:click={toggleObject}>Toggle Object</button>
+  <button on:click={toggleDataId}>Toggle DataId</button>
 
-  DataId is null
-
-{/if}
-
-{#if dataId !== null}
-
-  <button on:click={deleteThisWxrd}>Delete This Wxrd</button>
-
-{/if}
 
 </div>
 
@@ -99,6 +123,10 @@
   .wxrd-section {
     margin: 10px;
     padding: 10px;
+  }
+
+  .wxrd-mark-down {
+    white-space: pre-line;
   }
 
 </style>
