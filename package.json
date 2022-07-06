@@ -29,6 +29,7 @@
     "@entomdt/myriad-core": "^0.2.1",
     "faunadb": "^4.5.4",
     "sirv-cli": "^1.0.0",
+    "svelte-markdown": "^0.2.2",
     "svelte-notifications": "^0.9.95",
     "svelte-simple-modal": "^1.4.0"
   }

@@ -2,16 +2,18 @@
 
   import { allLoadedMarkDown } from './stores.js';
   import { deleteWxrd } from '../api/wxrds-api.js';
+  import SvelteMarkdown from 'svelte-markdown';
 
   export let wxrdObj = null;
   let displayObject = false;
+  let displayFM = false;
   let displayDataId = false;
 
   function filterOutCurrentDataId() {
     let filtered = [];
 
     for(const wxrdRef of $allLoadedMarkDown){
-      if(wxrdRef.id != wxrdObj.dataId){
+      if(wxrdRef.dataId != wxrdObj.dataId){
         // console.log(wxrdRef.id + ' is not ' + dataId + ', adding...');
         filtered.push(wxrdRef);
       }
@@ -36,6 +38,11 @@
   function toggleObject(){
 
     displayObject = !displayObject;
+  }
+  
+  function toggleFM(){
+
+    displayFM = !displayFM;
   }
 
   function toggleDataId(){
@@ -65,7 +72,7 @@
 
       <div class="wxrd-section wxrd-mark-down">
 
-        {wxrdObj.wxrd.markDown}
+        <SvelteMarkdown source={wxrdObj.wxrd.markDown} />
 
       </div>
 
@@ -105,6 +112,7 @@
 
 
   <button on:click={toggleObject}>Toggle Object</button>
+  <button on:click={toggleFM}>Toggle FM</button>
   <button on:click={toggleDataId}>Toggle DataId</button>
 
 
