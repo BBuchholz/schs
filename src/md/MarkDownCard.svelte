@@ -121,10 +121,11 @@
 <style>
 
   .wxrd-card {
-    margin: 5;
-    padding: 10;
+    margin: 5px;
+    padding: 10px;
     background: teal;
-    display:  inline-block;
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
   }
 

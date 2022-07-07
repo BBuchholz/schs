@@ -169,15 +169,11 @@
   <button on:click={createANewMarkDown}>Test Create MarkDown</button>
   <button on:click={loadMarkDown}>Load MarkDown</button>
 
-  <div class="MarkDown">
+  <div class="wxrd-well">
     
     {#each $allLoadedMarkDown as wxrdObj, i}
 
-    <p>test</p>
-
-    <MarkDownCard {wxrdObj} />
-
-    <!-- TODO: make this card work, data isn't displaying properly but it is returning, need to play with console log and some different values to see what we can get working, soo close-->
+      <MarkDownCard {wxrdObj} />
     
     {/each}
 
@@ -196,13 +192,13 @@
     justify-content: center;
   }
 
-  .MarkDown {
+  .wxrd-well {
     display: flex;
     flex-direction: column;
     padding: 10px;
     margin: 20px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: #282c34;
   }
 
