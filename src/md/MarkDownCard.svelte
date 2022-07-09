@@ -70,7 +70,17 @@
 
       {/if}
 
-      <div class="wxrd-section wxrd-mark-down">
+      {#if displayFM}
+
+        <div class="wxrd-section wxrd-fm">
+
+          <SvelteMarkdown source={wxrdObj.wxrd.metaData} />
+
+        </div>
+
+      {/if}
+
+      <div class="wxrd-section wxrd-content">
 
         <SvelteMarkdown source={wxrdObj.wxrd.markDown} />
 
@@ -134,7 +144,7 @@
     padding: 10px;
   }
 
-  .wxrd-mark-down {
+  .wxrd-content {
     white-space: pre-line;
   }
 

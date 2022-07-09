@@ -25,18 +25,14 @@ it('should create a basic MDWrd if no metaData is found', () => {
 
 it('should create a parsed MDWrd if metaData is found', () => {
 
-  const inputData = `
-
----
+  const inputData = `---
 
 testField: test value
 anotherTestField: another value
 
 ---
 
-Here is some text without any data in it, as if it was already parsed
-
-`;
+Here is some text without any data in it, as if it was already parsed`;
 
   //WE WANT TO HAVE PARSING BE A FUNCTION OF DJEHUTI AND 
   //FOR IT TO GENERATE A NEW WXRD WITH A NEW UUID SO EACH
@@ -49,8 +45,19 @@ Here is some text without any data in it, as if it was already parsed
     anotherTestField: "another value"
   };
 
+  const expectedFrontMatter = `---
+
+testField: test value
+anotherTestField: another value
+
+---`;
+
+  const expectedContent = 'Here is some text without any data in it, as if it was already parsed';
+
   expect(createdWxrd.markDown).toBe(inputData);
   expect(createdWxrd.metaData).toStrictEqual(expectedMetaData);
+  expect(createdWxrd.content).toBe(expectedContent);
+  expect(createdWxrd.frontMatter).toBe(expectedFrontMatter);
 
 });
 

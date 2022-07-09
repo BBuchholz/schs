@@ -16,7 +16,9 @@ export class Djehuti {
  
  		let newWxrd = new MDWxrd(multiLineInput);
 
- 		this.parseMetaData(newWxrd);
+ 		this.parseMD(newWxrd);
+
+ 		// console.log(newWxrd);
 
 		return newWxrd;
 	}
@@ -33,7 +35,7 @@ export class Djehuti {
 		return found;
 	}
 
-	parseMetaData(wxrd) {
+	parseMD(wxrd) {
 
 		if(this.startsWithADivider(wxrd.markDown)){
 
@@ -42,13 +44,23 @@ export class Djehuti {
 			// set to false here, will flip to true on first
 			// line in for loop below, then back to false
 			// when it finds the next divider
-			let inFrontMattter = false; 
+			let inFrontMattter = false;
+			let frontMatterClosed = false;
+			// let outOfFrontMatter = true; 
+			let dividerCount = 0;
 
 			const lines = this.splitToLines(wxrd.markDown);
 
 			// console.log('lines found: ' + lines.length);
 
+			let parsedContent = '';
+			let lineCount = 0;
+			let frontMatterLines = [];
+
 			for (const line of lines){
+
+				lineCount++;
+				// console.log('begin processing line ' + lineCount);
 
 				if(this.startsWithADivider(line)){
 
@@ -59,13 +71,28 @@ export class Djehuti {
 					// if its the first we'll become true
 					// if its the second it'll become false
 					inFrontMattter = !inFrontMattter;
+					dividerCount++;
+
+					// if(dividerCount < 2){
+					// 	outOfFrontMatter = false;
+					// }
 				}
 
-				if(inFrontMattter){
+				// console.log("inFrontMattter: " + inFrontMattter);
+				// console.log("dividerCount: " + dividerCount);
+
+				if(inFrontMattter && dividerCount < 2){
 
 					// ignore divider lines and empty lines
 
-					const trimmedLine = line.replace(/-/g, '').trim();
+					frontMatterLines.push(line);
+					// console.log('frontMatterLines: ' + frontMatterLines);
+
+					// console.log('front matter line prior to trim: ' + line);
+
+					// const trimmedLine = line.replace(/-/g, '').trim();
+
+					const trimmedLine = line;
 
 					if(trimmedLine){
 
@@ -74,13 +101,49 @@ export class Djehuti {
 						const metaKey = trimmedLine.slice(0, trimmedLine.indexOf(':')).trim();
 						const metaValue = trimmedLine.slice(trimmedLine.indexOf(':') + 1).trim();
 
-						wxrd.metaData[metaKey] = metaValue;											
+						if(!metaValue.startsWith('-')){
+
+						wxrd.metaData[metaKey] = metaValue;	
+						}
+
+					} else {
+
+						// console.log('ignoring empty line');
 					}
 
+				} else if (dividerCount == 2 && 
+						   !frontMatterClosed) {
+
+					// add the closing divider to front matter
+					frontMatterLines.push(line);
+					frontMatterClosed = true;
+
+				} else {
+
+					// console.log(wxrd);
+
+					// console.log("line of content: " + line);
+					// console.log(dividerCount);
+
+					if(!this.startsWithADivider(line) ||
+						dividerCount > 2){
+
+						parsedContent += line;	
+					}
+				
 				}
+
+
+				// console.log('end processing line ' + lineCount);
 
 			}
 
+			// console.log('finished front matter lines: ' + frontMatterLines);
+
+			wxrd.content = parsedContent;
+			wxrd.frontMatter = frontMatterLines.join('\n');
+
+			// console.log(wxrd);
 		}
 	}
 
