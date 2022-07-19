@@ -58,12 +58,15 @@
 
   function handleWxrdsWellClick(){
 
+
+    // TODO: should handle 'well' and 'wxrds' as well, find a way to make these variable associations, so the puzzlebox can be configurable
     $passPhrase = 'woander';
 
   }
  
   function handleMyriadsMatrixClick(){
 
+    // TODO: should handle 'mountain' and 'madness' as well, find a way to make these variable associations, so the puzzlebox can be configurable
     $passPhrase = 'matriculate';
   } 
 

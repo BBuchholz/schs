@@ -16,6 +16,8 @@
   import WxrdPage from './components/WxrdPage.svelte';
   import LeMarchand from './LeMarchand.svelte';
   import MDMDM from './md/MDMDM.svelte';
+  import WellOfWxrds from './md/WellOfWxrds.svelte';
+  import MountainsOfMadness from './md/MountainsOfMadness.svelte';
   
   function handleLeMarchandClick(){
 
@@ -56,17 +58,17 @@
 
         <Alexandria />
 
-      {:else if $passPhrase === 'woander'}
-
-        <WxrdPage />
-
       {:else if $passPhrase === 'lament'}
 
         <LeMarchand />
 
+      {:else if $passPhrase === 'woander'}
+
+        <WellOfWxrds />
+
       {:else if $passPhrase === 'matriculate'}
 
-        <MDMDM />
+        <MountainsOfMadness />
 
       {:else}
 
