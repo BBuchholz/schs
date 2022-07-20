@@ -67,7 +67,7 @@
   function handleMyriadsMatrixClick(){
 
     // TODO: should handle 'mountain' and 'madness' as well, find a way to make these variable associations, so the puzzlebox can be configurable
-    $passPhrase = 'matriculate';
+    $passPhrase = 'madness';
   } 
 
 </script>
@@ -76,7 +76,7 @@
     
     <div class="facet-face">
       <a 
-        href="#promulgate"
+        href="#P"
         on:click={handleParadisoClick}
       > 
         P
@@ -85,7 +85,7 @@
     </div>
     <div class="facet-face">
       <a 
-        href="#animatus"
+        href="#A"
         on:click={handleAewonicAlexandrianClick}
       > 
         A
@@ -94,7 +94,7 @@
     </div>
     <div class="facet-face">
       <a 
-        href="#woander"
+        href="#W"
         on:click={handleWxrdsWellClick}
       > 
         W
@@ -103,7 +103,7 @@
     </div>
     <div class="facet-face">
       <a 
-        href="#matriculate"
+        href="#M"
         on:click={handleMyriadsMatrixClick}
       > 
         M

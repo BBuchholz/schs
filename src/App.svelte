@@ -66,7 +66,8 @@
 
         <WellOfWxrds />
 
-      {:else if $passPhrase === 'matriculate'}
+      {:else if $passPhrase === 'matriculate' || 
+                $passPhrase === 'madness'}
 
         <MountainsOfMadness />
 

@@ -48,16 +48,39 @@ export const headerQuote = derived(
 
 		if ($passPhrase === 'matriculate'){
 
-			quote.content = 'It is absolutely necessary, for the peace and safety of mankind, that some of earth’s dark, dead corners and unplumbed depths be let alone; lest sleeping abnormalities wake to resurgent life, and blasphemously surviving nightmares squirm and splash out of their black lairs to newer and wider conquests.';
+			quote.content = 'This was Baphomet. This diced and divided thing.';
+
+			quote.source = 'Clive Barker, Cabal';
+		}
+
+		if ($passPhrase === 'madness'){
+
+			quote.content = `'It is absolutely necessary, for the peace and safety of mankind, that some of earth’s dark, dead corners and unplumbed depths be let alone; lest sleeping abnormalities wake to resurgent life, and blasphemously surviving nightmares squirm and splash out of their black lairs to newer and wider conquests.'`;
 
 			quote.source = 'H.P. Lovecraft, At the Mountains of Madness';
 		}
 
 		if ($passPhrase === 'woander'){
 
-			quote.content = 'This was Baphomet. This diced and divided thing.';
+			quote.content = `111. Mál er at þylja þular stóli á
+Urðarbrunni at, sá ek ok þagðak,
+sá ek ok hugðak,
+hlýdda ek á manna mál;
+of rúnar heyrða ek dæma,
+né of ráðum þögðu
+Háva höllu at, Háva höllu í,
+heyrða ek segja svá:
 
-			quote.source = 'Clive Barker, Cabal';
+111. It is time to chant | from the chanter's stool;
+By the wells of Urth I was,
+I saw and was silent, | I saw and thought,
+And heard the speech of Hor.
+(Of runes heard I words, | nor were counsels wanting,
+At the hall of Hor,
+In the hall of Hor;
+Such was the speech I heard.)`;
+
+			quote.source = '-- Havamal, verse 111, retrieved from http://voluspa.org/havamal111-115.htm on 2022-07-20';
 		}
 
 		if ($passPhrase === 'daedalusLab') {

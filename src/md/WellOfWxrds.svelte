@@ -148,13 +148,13 @@
 
   <h1>
   
-    WoW
+    Well of Wxrd
   
   </h1>
   
   <p>
   
-    (Well of Wxrds)
+    (WoW)
   
   </p>
 

@@ -1,6 +1,14 @@
 <script>
 
-  import { allLoadedMarkDown, displayMode } from './stores.js';
+  import {
+    passPhrase,
+  } from '../stores.js';
+
+  import { 
+    allLoadedMarkDown, 
+    displayMode,
+  } from './stores.js';
+
   import { readAll } from '../api/wxrds-api.js';
 
   import MarkDownCard from './MarkDownCard.svelte';
@@ -101,9 +109,14 @@
 
       const processed = processResponseObject(response);
 
+      //set app state
       $allLoadedMarkDown = [processed, ...$allLoadedMarkDown];
 
-      // set app state
+      if($passPhrase !== 'matriculate'){
+
+        $passPhrase = 'matriculate'; 
+      }
+
     }).catch((error) => {
       console.log('API error', error)
     })
@@ -148,13 +161,13 @@
 
   <h1>
   
-    MoM
+    Mountain of Madness
   
   </h1>
   
   <p>
   
-    (Mountains of Madness)
+    (MoM)
   
   </p>
 
