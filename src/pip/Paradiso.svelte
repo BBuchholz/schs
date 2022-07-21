@@ -2,16 +2,12 @@
   
   import { getContext } from 'svelte';
 
+  import { passPhrase } from '../stores.js';
+
   const { close } = getContext('simple-modal');
 
   import { getNotificationsContext } from 'svelte-notifications';
   const { addNotification } = getNotificationsContext();
- 
-  // import { 
-  //   // currentBookTitle,
-  // } from './stores.js';
-
-  // import OpenBookOption from './OpenBookOption.svelte';
 
   function notify(textValue){
     addNotification({ 
@@ -29,11 +25,23 @@
 
 <div class='main'>
 
+  <h1>
+  
+    Playground of Praxis
+  
+  </h1>
+  
+  <p>
+  
+    (PoP)
+  
+  </p>
+
   <div class='citadel-shelf'>
     
       <div class="book open-book">
         
-        <!-- {$currentBookTitle} --> copied 
+        {$passPhrase}
 
       </div>
     
@@ -41,7 +49,6 @@
 
   <div class='citadel-desk'>
     
-      <!-- <OpenBookOption /> -->
       not implemented yet
     
   </div>  

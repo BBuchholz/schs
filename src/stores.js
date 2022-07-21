@@ -83,6 +83,28 @@ Such was the speech I heard.)`;
 			quote.source = '-- Havamal, verse 111, retrieved from http://voluspa.org/havamal111-115.htm on 2022-07-20';
 		}
 
+		if ($passPhrase === 'DO_NOT_TOUCH_THIS_TEMPLATE'){
+
+			quote.content = 'CONTENT_HERE';
+
+			quote.source = 'SOURCE_HERE';
+		}
+
+		if ($passPhrase === 'promulgate'){
+
+			quote.content = `Now this is the Law of the Jungle — as old and as true as the sky;
+And the Wolf that shall keep it may prosper, but the Wolf that shall break it must die. `;
+
+			quote.source = 'Rudyard Kipling, The Law of the Jungle';
+		}
+
+		if ($passPhrase === 'praxis'){
+
+			quote.content = 'Practise a thousand times, and it becomes difficult; a thousand thousand, and it becomes easy; a thousand thousand times a thousand thousand, and it is no longer Thou that doeth it, but It that doeth itself through thee.';
+
+			quote.source = 'Aleister Crowley, The Book of Lies';
+		}
+
 		if ($passPhrase === 'daedalusLab') {
 
 			quote.content = 'I would have a workshop attached to ' + 
@@ -96,12 +118,19 @@ Such was the speech I heard.)`;
 
 		}
 
-		if ($passPhrase === 'alex') {
+		if ($passPhrase === 'animatus') { //TODO: change phrase
 
 			quote.content = 'I have always imagined that Paradise ' + 
 		 		'will be a kind of a Library.';
 
 			quote.source = 'Jorge Luis Borges';
+		}
+
+		if ($passPhrase === 'alex') { //TODO: change phrase
+
+			quote.content = 'The interior of our skulls contains a portal to infinity.';
+
+			quote.source = 'Grant Morrison, Supergods';
 		}
 
 		if ($passPhrase === 'lament') {
