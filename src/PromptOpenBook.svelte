@@ -8,10 +8,10 @@
   const { addNotification } = getNotificationsContext();
 
   import { 
+    currentBook,
     currentBookTitle,
+    currentBookCount,
   } from './stores.js';
-
-  import OpenBookOption from './OpenBookOption.svelte';
 
   function notify(textValue){
     addNotification({
@@ -25,53 +25,59 @@
     });
   }
 
+  function openBook() {
+
+    // let newBook = { title: 'Test ' + $currentBookCount };
+    // $currentBook = newBook;
+    // $currentBookCount = $currentBookCount + 1;
+
+    let newBook = { title: bookName };
+    $currentBook = newBook;
+
+    notify('opened book: ' + $currentBookTitle);
+  }
+  
+  function handleOpenClick(){
+
+    if(!bookName){
+      notify('name cannnot be empty');
+      return;
+    }
+    
+    openBook();
+    close();
+  }
+
+  let bookName = '';
+
 </script>
 
-<div class='main'>
+<div class='daedalus-lab'>
+  
+  <input bind:value={bookName} placeholder="enter book name" />  
 
-  <h1>
-  
-    Alexandrian Arcadia
-  
-  </h1>
-  
-  <p>
-  
-    (AA)
-  
-  </p>
-
-  <div class='citadel-shelf'>
-    
-      <div class="book open-book">
-        
-        {$currentBookTitle}
-
-      </div>
-    
+  <div class="lab-item">
+    <a 
+      href="#OpenBook"
+      on:click={handleOpenClick}
+    > 
+      Open
+    </a>
   </div>
-
-  <div class='citadel-desk'>
-    
-      <OpenBookOption />
-    
-  </div>  
 
 </div>
 
 <style>
 
-.citadel-shelf, .citadel-desk {
+.daedalus-lab {
   border: solid;
   border-radius: 10px;
-  margin: 10px;
-  padding: 10px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
 }
 
-.book {
+.lab-item {
   margin: 10px;
   padding: 10px;
   border: thin solid;

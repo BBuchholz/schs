@@ -2,16 +2,17 @@
   
   import { getContext } from 'svelte';
 
-  const { close } = getContext('simple-modal');
+  import PromptOpenBook from './PromptOpenBook.svelte';
+
+  const { open } = getContext('simple-modal');
 
   import { getNotificationsContext } from 'svelte-notifications';
   const { addNotification } = getNotificationsContext();
 
   import { 
+    currentBook,
     currentBookTitle,
   } from './stores.js';
-
-  import OpenBookOption from './OpenBookOption.svelte';
 
   function notify(textValue){
     addNotification({
@@ -25,57 +26,42 @@
     });
   }
 
+  let count = 0;
+
+  function handleOpenBookClick(){
+    
+    let newBook = { title: 'Test ' + count };
+    $currentBook = newBook;
+    count++;
+    
+    notify('opened book: ' + $currentBookTitle);
+  }
+
+  const showPromptOpenBook = () => {
+    open(PromptOpenBook);
+  };
+
 </script>
 
-<div class='main'>
-
-  <h1>
+<div class="open-book-option">
   
-    Alexandrian Arcadia
-  
-  </h1>
-  
-  <p>
-  
-    (AA)
-  
-  </p>
-
-  <div class='citadel-shelf'>
-    
-      <div class="book open-book">
-        
-        {$currentBookTitle}
-
-      </div>
-    
-  </div>
-
-  <div class='citadel-desk'>
-    
-      <OpenBookOption />
-    
-  </div>  
-
+  <a 
+    href="#openBook"
+    on:click={showPromptOpenBook}
+  > 
+    Open Book 
+  </a>
 </div>
 
 <style>
 
-.citadel-shelf, .citadel-desk {
-  border: solid;
-  border-radius: 10px;
-  margin: 10px;
-  padding: 10px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-}
 
-.book {
+.open-book-option {
   margin: 10px;
   padding: 10px;
   border: thin solid;
   border-radius: 10px;
 }
+
 
 </style>
