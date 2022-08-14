@@ -30,12 +30,12 @@
     Playground of Praxis
   
   </h1>
-  
-  <p>
-  
-    (PoP)
-  
-  </p>
+
+  <div class='flavor-text'>
+    
+    Flavor Text Goes Here
+
+  </div>
 
   <div class='citadel-shelf'>
     
@@ -66,6 +66,10 @@
   flex-flow: row wrap;
   justify-content: space-around;
 }
+
+  .flavor-text {
+    font-size: small;
+  }
 
 .book {
   margin: 10px;

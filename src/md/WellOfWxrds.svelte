@@ -151,12 +151,12 @@
     Well of Wxrd
   
   </h1>
-  
-  <p>
-  
-    (WoW)
-  
-  </p>
+
+  <div class='flavor-text'>
+    
+    Flavor Text Goes Here
+
+  </div>
 
   <button on:click={loadMarkDown}>Load MarkDown</button>
 
@@ -181,6 +181,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .flavor-text {
+    font-size: small;
   }
 
   .wxrd-well {

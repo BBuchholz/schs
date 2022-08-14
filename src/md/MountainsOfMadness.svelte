@@ -17,7 +17,7 @@
 
   const djehuti = new Djehuti();
 
-  let newMarkDownValue = 'Test';
+  let newMarkDownValue = '';
 
   // TODO: NOT SURE WHERE I WANT THESE YET BUT I WANT THESE SOMEWHERE
 
@@ -38,6 +38,10 @@
 
   // Function using fetch to POST to our API endpoint
   function createThisMarkDown() {
+
+    if(!newMarkDownValue){
+      return;
+    }
 
     const newMarkDown = djehuti.createMDWxrd(newMarkDownValue);
     console.log('mark down created', newMarkDown);
@@ -161,15 +165,15 @@
 
   <h1>
   
-    Mountain of Madness
+    Mountains of Madness
   
   </h1>
-  
-  <p>
-  
-    (MoM)
-  
-  </p>
+
+  <div class='flavor-text'>
+    
+    Share your crazy wisdom, add it to the wall for all to see...
+
+  </div>
 
   <p>
   
@@ -179,7 +183,7 @@
     
   </p>
 
-  <button on:click={createANewMarkDown}>Test Create MarkDown</button>
+  <button on:click={createANewMarkDown}>Scrawl</button>
   
   <div class="wxrd-well">
     
@@ -202,6 +206,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .flavor-text {
+    font-size: small;
   }
 
   .wxrd-well {
