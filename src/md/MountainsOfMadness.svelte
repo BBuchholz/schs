@@ -171,7 +171,7 @@
 
   <div class='flavor-text'>
     
-    Share your crazy wisdom, add it to the wall for all to see...
+    Share your crazy wisdom to the walls for all to see.... (this will be public, use appropriate discretion)
 
   </div>
 
