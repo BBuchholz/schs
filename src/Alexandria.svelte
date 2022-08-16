@@ -31,13 +31,13 @@
 
   <h1>
   
-    Alexandrian Arcadia
+    Alexandrian Arcade
   
   </h1>
 
   <div class='flavor-text'>
     
-    Flavor Text Goes Here
+    Wxrds you have added to your codices will be accessible here, you need only remember their names...
 
   </div>
 

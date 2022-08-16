@@ -154,7 +154,7 @@
 
   <div class='flavor-text'>
     
-    Flavor Text Goes Here
+    As you connect with others, your sippings from the collective well of wisdom and insight will bubble up here, interspersed with your own, mingling their mutual affinities...
 
   </div>
 

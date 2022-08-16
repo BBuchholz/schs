@@ -33,7 +33,7 @@
 
   <div class='flavor-text'>
     
-    Flavor Text Goes Here
+    Here you may log your endeavors as a testament to your credentials, whilst leaving behind an analysis point for your future strivings...
 
   </div>
 
