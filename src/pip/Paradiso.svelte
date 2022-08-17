@@ -24,16 +24,16 @@
 </script>
 
 <div class='main'>
-
+<!-- 
   <h1>
   
     Playground of Praxis
   
-  </h1>
+  </h1> -->
 
   <div class='flavor-text'>
     
-    Here you may log your endeavors as a testament to your credentials, whilst leaving behind an analysis point for your future strivings...
+    Here in this Playground of Praxis, you may log your quantifiable endeavors to demonstrate your credentials, leaving behind analysis points for our future strivings...
 
   </div>
 

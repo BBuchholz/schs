@@ -29,11 +29,14 @@
 
 <div class='main'>
 
-  <h1>
+<!--   <h1>
   
     Alexandrian Arcade
   
   </h1>
+ -->
+
+<!-- TODO: single point of entry, have to enter something to get something out, anything less than 100 wxrds should be looked up as a potential alias, increase limit? not found should return a list of things you can do -->
 
   <div class='flavor-text'>
     

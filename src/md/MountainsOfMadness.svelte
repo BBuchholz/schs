@@ -162,16 +162,16 @@
 </script> 
 
 <div class="main">
-
+<!-- 
   <h1>
   
     Mountains of Madness
   
-  </h1>
+  </h1> -->
 
   <div class='flavor-text'>
     
-    In accordance with ancient traditions the world over since time immemorial, here you may share your crazy wisdom to the walls for all to see.... (this will be public, use appropriate discretion)
+    Here you may share to the walls for all to see.... (this will be public, use appropriate discretion)
 
   </div>
 
@@ -183,7 +183,7 @@
     
   </p>
 
-  <button on:click={createANewMarkDown}>Scrawl</button>
+  <button on:click={createANewMarkDown}>Submit</button>
   
   <div class="wxrd-well">
     

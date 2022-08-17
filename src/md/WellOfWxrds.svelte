@@ -145,20 +145,22 @@
 </script> 
 
 <div class="main">
-
+<!-- 
   <h1>
   
     Well of Wxrd
   
-  </h1>
+  </h1> -->
 
   <div class='flavor-text'>
     
-    As you connect with others, your sippings from the collective well of wisdom and insight will bubble up here, interspersed with your own, mingling their mutual affinities...
+    Shares from within your circles will bubble up here, interspersed with your own, mingling their mutual affinities...
 
   </div>
 
-  <button on:click={loadMarkDown}>Load MarkDown</button>
+  <p>
+    <button on:click={loadMarkDown}>Load</button>
+  </p>
 
   <div class="wxrd-well">
     
