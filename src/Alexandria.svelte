@@ -12,6 +12,7 @@
   } from './stores.js';
 
   import OpenBookOption from './OpenBookOption.svelte';
+  import TurnMyrKiOption from './TurnMyrKiOption.svelte';
 
   function notify(textValue){
     addNotification({
@@ -57,6 +58,8 @@
   <div class='citadel-desk'>
     
       <OpenBookOption />
+
+      <TurnMyrKiOption />
     
   </div>  
 

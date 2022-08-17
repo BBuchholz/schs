@@ -112,6 +112,8 @@
 
   function loadMarkDown() {
 
+    //TODO: Fauna StepInStoneN: reverse order of returned results to well so that most recent comes first
+
     const allMarkDown = readAll();
 
     readAll().then((response) => {
