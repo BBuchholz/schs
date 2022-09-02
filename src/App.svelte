@@ -13,6 +13,7 @@
 
   import Paradiso from './pip/Paradiso.svelte';
   import Alexandria from './Alexandria.svelte';
+  import DoorStep from './DoorStep.svelte';
   import WxrdPage from './components/WxrdPage.svelte';
   import LeMarchand from './LeMarchand.svelte';
   import MDMDM from './md/MDMDM.svelte';
@@ -71,9 +72,13 @@
 
         <MountainsOfMadness />
 
-      {:else}
+      {:else if $passPhrase === 'LeMarchand'}
 
         <LeMarchand />
+
+      {:else}
+
+        <DoorStep />
 
       {/if}
 

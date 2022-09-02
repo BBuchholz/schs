@@ -161,6 +161,14 @@ And the Wolf that shall keep it may prosper, but the Wolf that shall break it mu
 
 		}
 
+		if (!$passPhrase.trim()){
+
+			quote.content = 
+				"MyrKis Cannot Be Purely Whitespace";
+			quote.source = 
+				"THE MGMNT"
+		}
+
 		if(!quote.content){
 
 			quote.content = 
