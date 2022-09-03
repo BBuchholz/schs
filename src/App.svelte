@@ -7,6 +7,7 @@
     modal,
     passPhrase,
     headerQuote,
+    devMode,
   } from './stores.js';
 
   import MyriadNotification from './MyriadNotification.svelte';
@@ -14,6 +15,7 @@
   import Paradiso from './pip/Paradiso.svelte';
   import Alexandria from './Alexandria.svelte';
   import DoorStep from './DoorStep.svelte';
+  import HelpDesk from './HelpDesk.svelte';
   import WxrdPage from './components/WxrdPage.svelte';
   import LeMarchand from './LeMarchand.svelte';
   import MDMDM from './md/MDMDM.svelte';
@@ -24,6 +26,19 @@
 
     $passPhrase = 'lament';
   } 
+
+
+  function initialize(){
+
+    $devMode = false;
+
+    if($devMode){
+
+      $passPhrase = 'help';
+    }
+  }
+
+  initialize();
 
 </script>
 
@@ -75,6 +90,10 @@
       {:else if $passPhrase === 'LeMarchand'}
 
         <LeMarchand />
+
+      {:else if $passPhrase === 'help'}
+
+        <HelpDesk />
 
       {:else}
 

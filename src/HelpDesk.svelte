@@ -52,6 +52,18 @@
 
   let currentMyrKi = '';
 
+  function initialize(){
+
+    $devMode = true;
+
+    if($devMode){
+
+      $passPhrase = 'help';
+    }
+  }
+
+  initialize();
+
 </script>
 
 <div class='main'>
@@ -77,6 +89,14 @@
     </a>
     
   </div>  
+
+  <div class="citadel-desk">
+
+    Try "LeMarchand"
+
+    <!-- We wanna make more of a game and less of a lesson... -->
+
+  </div>
 
 </div>
 

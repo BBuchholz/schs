@@ -161,6 +161,23 @@ And the Wolf that shall keep it may prosper, but the Wolf that shall break it mu
 
 		}
 
+		if ($passPhrase == 'Help') {
+
+			quote.content = 
+				"HINT: MyrKis are CaSe SeNsItIvE...";
+			quote.source = 
+				"THE MGMNT"			
+		}
+
+		if ($passPhrase == 'help') {
+
+			quote.content = 
+				"Still a bit murky? What's a MyrKi? While we " + 
+				"certainly would never say such admonition as 'Look No Further' (being that we, as individuals and as a collective organization would always hope for further looking) sometimes the Mirror Key can become a bit Murky (they do require polish at regular intervals for proper functioning) and so we're mainting a collective little cheat sheet for the more common commands we like to use. (and we assure you, all the keys can be found, that's half of the fun of the game).";
+			quote.source = 
+				"THE MGMNT"			
+		}
+
 		if (!$passPhrase.trim()){
 
 			quote.content = 
