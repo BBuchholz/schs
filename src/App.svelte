@@ -60,6 +60,11 @@
     
     <main>
 
+      <img 
+        src="images/SCHS_logo.png" 
+        alt="Socratic Circle Home School logo" 
+        class="center" />
+
       {#if $passPhrase === 'myrki'}
 
         <MyrKiLayout />
@@ -78,7 +83,12 @@
 
 <style>
 
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 
 
 </style>

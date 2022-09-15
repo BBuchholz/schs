@@ -6,8 +6,15 @@
 
 <div class='main'>
 
-  <h1>Pure CSS Masonry</h1>
-  <p>By using CSS3 columns, we can easily create a Masonry.js-like layout where random-height blocks fit together.</p>
+  <div class='header'>
+
+    <h1 class='title'>Socratic Circle Home School</h1>
+
+    <p class='tagline'>
+      Welcome to the online center for the Socratic Circle Home School (currently under development)
+    </p>
+  
+  </div>
 
   <article>
 
@@ -83,34 +90,37 @@
   }
 
 
-  p {
-    text-align:  left;
-    margin:  1rem 0; 
-  }
-
-
 
 
   /*  styles for background color, etc; not necessary for this thing to work  */
 
 
 
-  body {
-    padding:  1em;
-    font-family:  sans-serif; 
+
+  .header {
+
+    text-align: center;
   }
 
-
-
-
-  h1 {
+  .title {
     font-size:  3rem;
     font-weight:  800;
+    padding-bottom: 0px;
+    margin: 0px;
   }
 
-  body {
-    line-height:  1.25;
+  .tagline {
+    font-size: 1rem;
+    font-weight: 200;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    margin: 0px;
   }
+
+
+
+
+
 
 
 
