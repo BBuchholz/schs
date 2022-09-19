@@ -30,6 +30,9 @@
   function turnMyrKi() {
 
     $passPhrase = currentMyrKi;
+
+    console.log('passPhrase set to ' + $passPhrase);
+
     currentMyrKi = '';
   }
   
@@ -73,7 +76,7 @@
       href="#openBook"
       on:click={handleTurnMyrKiClick}
     > 
-      Turn
+      Go
     </a>
     
   </div>  

@@ -1,6 +1,6 @@
 <script>
   
-  //base template copied from: https://codepen.io/AdamBlum/pen/DZXELw
+  import DoorStep from './DoorStep.svelte';
 
 </script>
 
@@ -16,58 +16,47 @@
   
   </div>
 
-  <article>
+  <DoorStep />
 
-    <section>
-      <p>Lorem ipsum dolor sit amet, consectetur.</p>
-    </section>
-    
-    <section>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error aliquid reprehenderit expedita odio beatae est.</p>
-    </section>
-    
-    <section>
-      <p>Lorem ipsum dolor sit amet, consectetur.</p>
-    </section>
-    
-    <section>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis quaerat suscipit ad.</p>
-    </section>
+  <div class="pathFork">
 
-    <section>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem nihil alias amet dolores fuga totam sequi a cupiditate ipsa voluptas id facilis nobis.</p>
-    </section>
+    <div class="stepInStone">
+      
+      <p>Not sure where to begin? What are you interested in? (Start an Investigation) (TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
 
+    </div>
 
-    <section>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem ut debitis dolorum earum expedita eveniet voluptatem quibusdam facere eos numquam commodi ad iusto laboriosam rerum aliquam.</p>
-    </section>
+    <div class="stepInStone">
+      
+      <p>Ready to begin exploring? Find others walking similar paths and find a commonality of practice to discuss and further. (Follow another's footsteps with a tutorial)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+
+    </div>
+
+    <div class="stepInStone">
+      
+      <p>Unsatisfied with the paths before you? (Write your own and become a trailblazer!)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+
+    </div>
+
+    <div class="stepInStone">
+      
+      <p>Struggling with some challenge before you? (Ask a question to seek help from others)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+
+    </div>
+
+    <div class="stepInStone">
+      
+      <p>Interesting in sharing your accumulated experiences? (Post up as a knowledge source for various areas you are familiar with)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+
+    </div>
+
+    <div class="stepInStone">
+      
+      <p>Don't see what you're looking for? Suggest a new Step In Stone Here(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+
+    </div>
     
-    <section>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    </section>
-    
-    <section>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat  architecto quis tenetur fugiat veniam iste molestiae fuga labore!</p>
-    </section>
-    
-    <section>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit accusamus tempore at porro officia rerum est impedit ea ipsa tenetur. Labore libero hic error sunt laborum expedita.</p>
-    </section>
-    
-    <section>
-      <p>Lorem ipsum dolor sit.</p>
-    </section>
-    
-    <section>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima asperiores eveniet vero velit eligendi aliquid in.</p>
-    </section>
-    
-    <section>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus dolorem maxime minima animi cum.</p>
-    </section>
-    
-  </article> 
+  </div> 
 
 </div>
 
@@ -76,17 +65,18 @@
   *, *:before, *:after {box-sizing:  border-box !important;}
 
 
-  article {
+  .pathFork {
     column-width: 13em;
     column-gap: 0.5em;
   }
 
-  section {
+  .stepInStone {
     display: inline-block;
     margin:  0.25rem;
     padding:  1rem;
     width:  100%; 
     border: 0.1em solid black;
+    border-radius: 0.73rem;
   }
 
 
