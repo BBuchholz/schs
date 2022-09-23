@@ -1,201 +1,274 @@
 import { Wxrd } from './Wxrd';
 import { MDWxrd } from './MDWxrd';
 
+import { v4 as uuidv4 } from 'uuid';
+
 export class Djehuti {
 
-	constructor(){
+  constructor(){
 
-	}
+  }
 
-	createWxrd(multiLineInput) {
+  createWxrd(multiLineInput) {
  
-		return new Wxrd(multiLineInput);
-	}
+    return new Wxrd(multiLineInput);
+  }
 
-	createMDWxrd(multiLineInput) {
+  createMDWxrd(multiLineInput) {
  
- 		let newWxrd = new MDWxrd(multiLineInput);
+    let newWxrd = new MDWxrd(multiLineInput);
 
- 		this.parseMD(newWxrd);
+    this.parseMD(newWxrd);
 
- 		// console.log(newWxrd);
+    // console.log(newWxrd);
 
-		return newWxrd;
-	}
+    return newWxrd;
+  }
 
-	startsWithADivider(multiLineInput) {
+  startsWithADivider(multiLineInput) {
 
-		let found = false;
+    let found = false;
 
-		if(multiLineInput.trim().startsWith('---')){
-			
-			found = true;
-		}
+    if(multiLineInput.trim().startsWith('---')){
+      
+      found = true;
+    }
 
-		return found;
-	}
+    return found;
+  }
 
-	parseMD(wxrd) {
+  
+  ensureUuid(markdownText){
 
-		if(this.startsWithADivider(wxrd.markDown)){
+    //split into lines
+    const lines = markdownText.split('\n');
+    let newLines = [];
 
-			// console.log('found opening divider');
+    const trimmed = markdownText.trim();
 
-			// set to false here, will flip to true on first
-			// line in for loop below, then back to false
-			// when it finds the next divider
-			let inFrontMattter = false;
-			let frontMatterClosed = false;
-			// let outOfFrontMatter = true; 
-			let dividerCount = 0;
+    if(!trimmed.startsWith('---')){
 
-			const lines = this.splitToLines(wxrd.markDown);
+      //there's no front matter found, so we can
+      //skip checking for existing uuid also
+      newLines.push('---');
+      newLines.push('');
 
-			// console.log('lines found: ' + lines.length);
+      const uuidLine = 'uuid: ' + uuidv4();
+  
+      newLines.push(uuidLine);
+      newLines.push('');
+      newLines.push('---');
+      newLines.push('');
+      newLines = newLines.concat(lines);
+    
+    }else{
 
-			let parsedContent = '';
-			let lineCount = 0;
-			let frontMatterLines = [];
+      //check if uuid is set
+      let uuidIsSet = false;
 
-			for (const line of lines){
+      for(const line of lines){
 
-				lineCount++;
-				// console.log('begin processing line ' + lineCount);
+        //parse each line to see if begins with uuid: 
+        if(line.startsWith('uuid:')){
 
-				if(this.startsWithADivider(line)){
+          uuidIsSet = true;
+        }
+      }
 
-					// console.log('closing divider found');
+      //now that we know if we have one or not
+      //we can cycle through and append as appropriate
 
-					// we found a divider, toggle status
-					// which was initialized to false above
-					// if its the first we'll become true
-					// if its the second it'll become false
-					inFrontMattter = !inFrontMattter;
-					dividerCount++;
+      let openFound = false;
 
-					// if(dividerCount < 2){
-					// 	outOfFrontMatter = false;
-					// }
-				}
+      for(const line of lines){
 
-				// console.log("inFrontMattter: " + inFrontMattter);
-				// console.log("dividerCount: " + dividerCount);
+        if(!uuidIsSet && 
+           line.startsWith('---') && 
+           !openFound){
 
-				if(inFrontMattter && dividerCount < 2){
+  
+          const uuidLine = 'uuid: ' + uuidv4();
+  
+          openFound = true;
+          newLines.push(line);
+          newLines.push('');
+          newLines.push(uuidLine);
+        
+        }else{
 
-					// ignore divider lines and empty lines
+          newLines.push(line);
+        }
 
-					frontMatterLines.push(line);
-					// console.log('frontMatterLines: ' + frontMatterLines);
+      }
+    }
 
-					// console.log('front matter line prior to trim: ' + line);
+    const newBlock = newLines.join('\n');
 
-					// const trimmedLine = line.replace(/-/g, '').trim();
-
-					const trimmedLine = line;
-
-					if(trimmedLine){
-
-						// console.log('processing line: ' + trimmedLine);
-
-						const metaKey = trimmedLine.slice(0, trimmedLine.indexOf(':')).trim();
-						const metaValue = trimmedLine.slice(trimmedLine.indexOf(':') + 1).trim();
-
-						if(!metaValue.startsWith('-')){
-
-						wxrd.metaData[metaKey] = metaValue;	
-						}
-
-					} else {
-
-						// console.log('ignoring empty line');
-					}
-
-				} else if (dividerCount == 2 && 
-						   !frontMatterClosed) {
-
-					// add the closing divider to front matter
-					frontMatterLines.push(line);
-					frontMatterClosed = true;
-
-				} else {
-
-					// console.log(wxrd);
-
-					// console.log("line of content: " + line);
-					// console.log(dividerCount);
-
-					if(!this.startsWithADivider(line) ||
-						dividerCount > 2){
-
-						parsedContent += line;	
-					}
-				
-				}
+    return newBlock
+  }
 
 
-				// console.log('end processing line ' + lineCount);
+  parseMD(wxrd) {
 
-			}
+    if(this.startsWithADivider(wxrd.markDown)){
 
-			// console.log('finished front matter lines: ' + frontMatterLines);
+      // console.log('found opening divider');
 
-			wxrd.content = parsedContent;
-			wxrd.frontMatter = frontMatterLines.join('\n');
+      // set to false here, will flip to true on first
+      // line in for loop below, then back to false
+      // when it finds the next divider
+      let inFrontMattter = false;
+      let frontMatterClosed = false;
+      // let outOfFrontMatter = true; 
+      let dividerCount = 0;
 
-			// console.log(wxrd);
-		}
-	}
+      const lines = this.splitToLines(wxrd.markDown);
 
-	splitToLines(multiLineInput) {
+      // console.log('lines found: ' + lines.length);
 
-		return multiLineInput.split('\n');
-	}
+      let parsedContent = '';
+      let lineCount = 0;
+      let frontMatterLines = [];
+
+      for (const line of lines){
+
+        lineCount++;
+        // console.log('begin processing line ' + lineCount);
+
+        if(this.startsWithADivider(line)){
+
+          // console.log('closing divider found');
+
+          // we found a divider, toggle status
+          // which was initialized to false above
+          // if its the first we'll become true
+          // if its the second it'll become false
+          inFrontMattter = !inFrontMattter;
+          dividerCount++;
+
+          // if(dividerCount < 2){
+          //  outOfFrontMatter = false;
+          // }
+        }
+
+        // console.log("inFrontMattter: " + inFrontMattter);
+        // console.log("dividerCount: " + dividerCount);
+
+        if(inFrontMattter && dividerCount < 2){
+
+          // ignore divider lines and empty lines
+
+          frontMatterLines.push(line);
+          // console.log('frontMatterLines: ' + frontMatterLines);
+
+          // console.log('front matter line prior to trim: ' + line);
+
+          // const trimmedLine = line.replace(/-/g, '').trim();
+
+          const trimmedLine = line;
+
+          if(trimmedLine){
+
+            // console.log('processing line: ' + trimmedLine);
+
+            const metaKey = trimmedLine.slice(0, trimmedLine.indexOf(':')).trim();
+            const metaValue = trimmedLine.slice(trimmedLine.indexOf(':') + 1).trim();
+
+            if(!metaValue.startsWith('-')){
+
+            wxrd.metaData[metaKey] = metaValue; 
+            }
+
+          } else {
+
+            // console.log('ignoring empty line');
+          }
+
+        } else if (dividerCount == 2 && 
+               !frontMatterClosed) {
+
+          // add the closing divider to front matter
+          frontMatterLines.push(line);
+          frontMatterClosed = true;
+
+        } else {
+
+          // console.log(wxrd);
+
+          // console.log("line of content: " + line);
+          // console.log(dividerCount);
+
+          if(!this.startsWithADivider(line) ||
+            dividerCount > 2){
+
+            parsedContent += line;  
+          }
+        
+        }
 
 
-	// TODO: Mimic createWxrd to implement createMarkDown
+        // console.log('end processing line ' + lineCount);
 
-	importWxrdFromJson(jsonString) {
+      }
 
-		if(!this.hasJsonStructure(jsonString)){
+      // console.log('finished front matter lines: ' + frontMatterLines);
 
-			throw "can't import json from non-json string";
-		}
+      wxrd.content = parsedContent;
+      wxrd.frontMatter = frontMatterLines.join('\n');
 
-		const parsed = JSON.parse(jsonString);
+      // console.log(wxrd);
+    }
+  }
 
-		return new Wxrd(parsed);
-	}
+  splitToLines(multiLineInput) {
 
-	importMDWxrdFromJson(jsonString) {
+    return multiLineInput.split('\n');
+  }
 
-		if(!this.hasJsonStructure(jsonString)){
 
-			throw "can't import json from non-json string";
-		}
+  // TODO: Mimic createWxrd to implement createMarkDown
 
-		const parsed = JSON.parse(jsonString);
+  importWxrdFromJson(jsonString) {
 
-		return new MDWxrd(parsed);
-	}
+    if(!this.hasJsonStructure(jsonString)){
 
-	hasJsonStructure(str) {
-	
-		// adapted from: https://stackoverflow.com/a/52799327/670768
-		if (typeof str !== 'string') {
-			return false;
-		}
+      throw "can't import json from non-json string";
+    }
 
-	    try {
-	    
-	        const result = JSON.parse(str);
-	        const type = Object.prototype.toString.call(result);
-	        return type === '[object Object]' 
-	            || type === '[object Array]';
-	    
-	    } catch (err) {
-	    
-	        return false;
-	    }
-	}
+    const parsed = JSON.parse(jsonString);
+
+    return new Wxrd(parsed);
+  }
+
+  importMDWxrdFromJson(jsonString) {
+
+    if(!this.hasJsonStructure(jsonString)){
+
+      throw "can't import json from non-json string";
+    }
+
+    const parsed = JSON.parse(jsonString);
+
+    return new MDWxrd(parsed);
+  }
+
+  hasJsonStructure(str) {
+  
+    // adapted from: https://stackoverflow.com/a/52799327/670768
+    if (typeof str !== 'string') {
+      return false;
+    }
+
+      try {
+      
+          const result = JSON.parse(str);
+          const type = Object.prototype.toString.call(result);
+          return type === '[object Object]' 
+              || type === '[object Array]';
+      
+      } catch (err) {
+      
+          return false;
+      }
+  }
 }

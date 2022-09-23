@@ -15,6 +15,7 @@ export const previousTurnInfo = writable('');
 export const currentBookCount = writable(0);
 
 export const currentBook = writable('');
+export const currentMDWxrd = writable(null);
 
 export const currentBookTitle = derived(
 	[currentBook], 

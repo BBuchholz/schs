@@ -7,13 +7,16 @@
 //       D.Controller (we are deprecating D.Controller entity)
 // MIMIC: pandaemonium.studio implementation for this mod
 
-  import DjehutiController from '../myriad/DjehutiController.js';
+  import { Djehuti } from '../myriad/Djehuti.js';
 
-  const djehuti = DjehutiController();
+  const thothMagus = new Djehuti();
 
-export const create = (text) => {
+export const createMDWxrd = (text) => {
 
-  const newWxrd = djehuti.createWxrd(text).result;
+  const ensuredWithUuid = thothMagus.ensureUuid(text);
+  const newWxrd = thothMagus.createMDWxrd(ensuredWithUuid);
+
+  console.log('new wxrd created: ' + newWxrd);
 
   return fetch('/api/wxrds-create', {
     body: JSON.stringify(newWxrd),
@@ -25,6 +28,15 @@ export const create = (text) => {
 
 export const readAll = () => {
   return fetch('/api/wxrds-read-all').then((response) => {
+    return response.json()
+  })
+}
+
+export const readForPreferredAlias = (preferredAlias) => {
+  return fetch('/api/wxrds-read-alias', {
+    body: JSON.stringify(preferredAlias),
+    method: 'POST'
+  }).then((response) => {
     return response.json()
   })
 }

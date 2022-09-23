@@ -1,9 +1,9 @@
 // NB: /api/ prefix used below is mapped in netlify.toml (cf.)
 
 
-  import DjehutiController from '../myriad/DjehutiController.js';
+import DjehutiController from '../myriad/DjehutiController.js';
 
-  const djehuti = DjehutiController();
+const djehuti = DjehutiController();
 
 export const create = (text) => {
 

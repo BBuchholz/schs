@@ -14,7 +14,6 @@
   import Alexandria from './Alexandria.svelte';
   import DoorStep from './DoorStep.svelte';
   import MasonryLayout from './MasonryLayout.svelte';
-  import MyrKiLayout from './MyrKiLayout.svelte';
   import HelpDesk from './HelpDesk.svelte';
   import WxrdPage from './components/WxrdPage.svelte';
   import LeMarchand from './LeMarchand.svelte';

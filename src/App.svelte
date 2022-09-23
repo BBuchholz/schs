@@ -1,13 +1,16 @@
 <script>
 
   import Modal from 'svelte-simple-modal';
-  import Notifications from 'svelte-notifications';
+  import Notifications from 'svelte-notifications';   
+
+  import SvelteMarkdown from 'svelte-markdown';
 
   import { 
     modal,
     passPhrase,
     headerQuote,
     devMode,
+    currentMDWxrd,
   } from './stores.js';
 
   
@@ -68,6 +71,10 @@
       {#if $passPhrase === 'myrki'}
 
         <MyrKiLayout />
+
+      {:else if $currentMDWxrd}
+
+        <SvelteMarkdown source={$currentMDWxrd.markDown} />
 
       {:else}
 
