@@ -17,6 +17,32 @@ export const currentBookCount = writable(0);
 export const currentBook = writable('');
 export const currentMDWxrd = writable(null);
 
+export const schsRespectable = writable(true);
+
+export const schsUnfolded = derived(
+	[schsRespectable],
+	([$schsRespectable]) => {
+
+    if($schsRespectable) {
+      return 'Socratic Citadel Hearth Society';
+    }else{
+      return 'Slacker Circle Home School';
+    }
+
+});	
+
+export const schsTagline = derived(
+  [schsRespectable],
+  ([$schsRespectable]) => {
+
+    if($schsRespectable) {
+      return 'Welcome to the online center for the Socratic Citadel Hearth Society (currently under development)';
+    }else{
+      return 'Slacker Circle Home School';
+    }
+
+}); 
+
 export const currentBookTitle = derived(
 	[currentBook], 
 	([$currentBook]) => {

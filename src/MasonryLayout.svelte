@@ -2,60 +2,91 @@
   
   import DoorStep from './DoorStep.svelte';
 
+  import { 
+    passPhrase,
+    currentMDWxrd,
+    schsUnfolded,
+    schsTagline,
+    schsRespectable,
+  } from './stores.js';
+
+
 </script>
 
 <div class='main'>
 
   <div class='header'>
 
-    <h1 class='title'>Socratic Circle Home School</h1>
+    <h1 
+      class='title'
+      on:click={() => $schsRespectable = !$schsRespectable }
+    >
+      {$schsUnfolded}
+    </h1>
 
     <p class='tagline'>
-      Welcome to the online center for the Socratic Circle Home School (currently under development)
+      {$schsTagline}
     </p>
   
   </div>
 
-  <DoorStep />
+  {#if !$schsRespectable}
+
+    <DoorStep />
+
+  {/if}
 
   <div class="pathFork">
 
-    <div class="stepInStone">
-      
-      <p>Not sure where to begin? What are you interested in? (Start an Investigation) (TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+    {#if !$schsRespectable}
 
-    </div>
+      <div class="stepInStone">
+        
+        <div class="lab-item">
+          <a href="?passPhrase=verifyView"> 
+            Press Me
+          </a>
+        </div>
 
-    <div class="stepInStone">
-      
-      <p>Ready to begin exploring? Find others walking similar paths and find a commonality of practice to discuss and further. (Follow another's footsteps with a tutorial)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+        <p>Ready to begin exploring? Find others walking similar paths and find a commonality of practice to discuss and further. (Follow another's footsteps with a tutorial)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
 
-    </div>
+      </div>
 
-    <div class="stepInStone">
-      
-      <p>Unsatisfied with the paths before you? (Write your own and become a trailblazer!)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+    {:else}
 
-    </div>
 
-    <div class="stepInStone">
-      
-      <p>Struggling with some challenge before you? (Ask a question to seek help from others)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+      <div class="stepInStone">
+        
+        <p>Not sure where to begin? What are you interested in? (Start an Investigation) (TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
 
-    </div>
+      </div>
 
-    <div class="stepInStone">
-      
-      <p>Interesting in sharing your accumulated experiences? (Post up as a knowledge source for various areas you are familiar with)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+      <div class="stepInStone">
+        
+        <p>Unsatisfied with the paths before you? (Write your own and become a trailblazer!)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
 
-    </div>
+      </div>
 
-    <div class="stepInStone">
-      
-      <p>Don't see what you're looking for? Suggest a new Step In Stone Here(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+      <div class="stepInStone">
+        
+        <p>Struggling with some challenge before you? (Ask a question to seek help from others)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
 
-    </div>
+      </div>
+
+      <div class="stepInStone">
+        
+        <p>Interesting in sharing your accumulated experiences? (Post up as a knowledge source for various areas you are familiar with)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+
+      </div>
+
+      <div class="stepInStone">
+        
+        <p>Don't see what you're looking for? Suggest a new Step In Stone Here(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+
+      </div>
     
+    {/if}
+
   </div> 
 
 </div>
