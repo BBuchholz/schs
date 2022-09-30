@@ -48,6 +48,7 @@ When you have finished viewing the video, POST A COMMENT HERE with your verifcat
   import Alexandria from './Alexandria.svelte';
   import DoorStep from './DoorStep.svelte';
   import MasonryLayout from './MasonryLayout.svelte';
+  import KiplingLayout from './KiplingLayout.svelte';
   import MyrKiLayout from './MyrKiLayout.svelte';
   import VerifiableViewer from './VerifiableViewer.svelte';
   import HelpDesk from './HelpDesk.svelte';
@@ -86,12 +87,12 @@ When you have finished viewing the video, POST A COMMENT HERE with your verifcat
 
       <img 
         src="images/SCHS_logo.png" 
-        alt="Socratic Circle Home School logo" 
+        alt="Socratic Citadel Hearth Society logo" 
         class="center" />
 
-      {#if $passPhrase === 'myrki'}
+      {#if $passPhrase === 'SFS'}
 
-        <MyrKiLayout />
+        <KiplingLayout />
 
       {:else if $passPhrase === 'verifyView' && $currentMDWxrd}
 

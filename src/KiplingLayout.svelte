@@ -25,6 +25,12 @@
     open(PromptEnterPassPhrase);
   };
 
+  function initialize(){
+    $schsRespectable = false;
+  }
+
+  initialize();
+
 </script>
 
 <div class='main'>
