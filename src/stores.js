@@ -38,7 +38,7 @@ export const schsTagline = derived(
     if($schsRespectable) {
       return 'Welcome to the online center for the Socratic Citadel Hearth Society (currently under development)';
     }else{
-      return 'Slacker Circle Home School';
+      return "\"Stop Complainin'... Start Obtainin'...\" - Official Motto of the Slacker Circle Siblings, Welcome to the Clubhouse...";
     }
 
 }); 
