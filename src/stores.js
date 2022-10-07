@@ -19,29 +19,29 @@ export const currentMDWxrd = writable(null);
 
 export const schsRespectable = writable(true);
 
-export const schsUnfolded = derived(
-	[schsRespectable],
-	([$schsRespectable]) => {
+// export const schsUnfolded = derived(
+// 	[schsRespectable],
+// 	([$schsRespectable]) => {
 
-    if($schsRespectable) {
-      return 'Socratic Citadel Hearth Society';
-    }else{
-      return 'Slacker Circle Home School';
-    }
+//     if($schsRespectable) {
+//       return 'Socratic Citadel Hearth Society';
+//     }else{
+//       return 'Slacker Circle Home School';
+//     }
 
-});	
+// });	
 
-export const schsTagline = derived(
-  [schsRespectable],
-  ([$schsRespectable]) => {
+// export const schsTagline = derived(
+//   [schsRespectable],
+//   ([$schsRespectable]) => {
 
-    if($schsRespectable) {
-      return 'Welcome to the online center for the Socratic Citadel Hearth Society (currently under development)';
-    }else{
-      return "\"Stop Complainin'... Start Obtainin'...\" - Official Motto of the Slacker Circle Siblings, Welcome to the Clubhouse...";
-    }
+//     if($schsRespectable) {
+//       return 'Welcome to the online center for the Socratic Citadel Hearth Society (currently under development)';
+//     }else{
+//       return "\"Stop Complainin'... Start Obtainin'...\" - Official Motto of the Slacker Circle Siblings, Welcome to the Clubhouse...";
+//     }
 
-}); 
+// }); 
 
 export const currentBookTitle = derived(
 	[currentBook], 

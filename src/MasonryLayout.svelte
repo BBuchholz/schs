@@ -5,8 +5,6 @@
   import { 
     passPhrase,
     currentMDWxrd,
-    schsUnfolded,
-    schsTagline,
     schsRespectable,
   } from './stores.js';
 
@@ -35,11 +33,11 @@
       class='title'
       on:click={showPromptEnterPassPhrase}
     >
-      {$schsUnfolded}
+      Socratic Citadel Hearth Society
     </h1>
 
     <p class='tagline'>
-      {$schsTagline}
+      Welcome to the online center for the Socratic Citadel Hearth Society. We open these doors with the intention of establishing a <a href="https://youtube.com/clip/Ugkx9MkejdusERb7h2scBMdzu41f5ijTO1WO">Success 3.0</a> institution.
     </p>
   
   </div>

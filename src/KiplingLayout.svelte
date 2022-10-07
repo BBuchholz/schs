@@ -5,8 +5,6 @@
   import { 
     passPhrase,
     currentMDWxrd,
-    schsUnfolded,
-    schsTagline,
     schsRespectable,
   } from './stores.js';
 
@@ -41,11 +39,14 @@
       class='title'
       on:click={showPromptEnterPassPhrase}
     >
-      {$schsUnfolded}
+      Slacker Circle Home School
     </h1>
 
     <p class='tagline'>
-      {$schsTagline}
+      "Stop Complainin'... Start Obtainin'..." - Official Motto of the Slacker Circle Siblings
+    </p>
+    <p>
+      Welcome to the Clubhouse...
     </p>
   
   </div>
