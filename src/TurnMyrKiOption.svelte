@@ -10,8 +10,8 @@
   const { addNotification } = getNotificationsContext();
 
   import { 
-    currentBook,
-    currentBookTitle,
+    // currentBook,
+    // currentBookTitle,
   } from './stores.js';
 
   function notify(textValue){

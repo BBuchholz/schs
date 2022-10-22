@@ -17,44 +17,7 @@ export const currentBookCount = writable(0);
 export const currentBook = writable('');
 export const currentMDWxrd = writable(null);
 
-export const schsRespectable = writable(true);
 
-// export const schsUnfolded = derived(
-// 	[schsRespectable],
-// 	([$schsRespectable]) => {
-
-//     if($schsRespectable) {
-//       return 'Socratic Citadel Hearth Society';
-//     }else{
-//       return 'Slacker Circle Home School';
-//     }
-
-// });	
-
-// export const schsTagline = derived(
-//   [schsRespectable],
-//   ([$schsRespectable]) => {
-
-//     if($schsRespectable) {
-//       return 'Welcome to the online center for the Socratic Citadel Hearth Society (currently under development)';
-//     }else{
-//       return "\"Stop Complainin'... Start Obtainin'...\" - Official Motto of the Slacker Circle Siblings, Welcome to the Clubhouse...";
-//     }
-
-// }); 
-
-export const currentBookTitle = derived(
-	[currentBook], 
-	([$currentBook]) => {
-
-	if($currentBook) {
-
-    return $currentBook.title;
-  }
-
-  return '(no book currently open)';
-  
-});
 
 export const headerQuote = derived(
 	[passPhrase, ],

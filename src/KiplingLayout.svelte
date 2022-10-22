@@ -5,7 +5,6 @@
   import { 
     passPhrase,
     currentMDWxrd,
-    schsRespectable,
   } from './stores.js';
 
   import { getContext } from 'svelte';
@@ -14,20 +13,10 @@
 
   const { open } = getContext('simple-modal');
 
-  function handleTitleClick(){
-
-    $schsRespectable = !$schsRespectable;
-  }
-
   const showPromptEnterPassPhrase = () => {
     open(PromptEnterPassPhrase);
   };
 
-  function initialize(){
-    $schsRespectable = false;
-  }
-
-  initialize();
 
 </script>
 
@@ -39,11 +28,11 @@
       class='title'
       on:click={showPromptEnterPassPhrase}
     >
-      Slacker Circle Home School
+      Socratic Circle Home School
     </h1>
 
     <p class='tagline'>
-      "Stop Complainin'... Start Obtainin'..." - Official Motto of the Slacker Circle Siblings
+      "Stop Complainin'... Start Obtainin'..." -- @SCSib1232
     </p>
     <p>
       Welcome to the Clubhouse...
@@ -53,8 +42,6 @@
 
   <div class="pathFork">
 
-    {#if !$schsRespectable}
-
       <div class="stepInStone">
         
         <div class="lab-item">
@@ -63,44 +50,9 @@
           </a>
         </div>
 
-        <p>Ready to begin exploring? Find others walking similar paths and find a commonality of practice to discuss and further. (Follow another's footsteps with a tutorial)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+        <p>First Lesson: The Creativity Delusion</p>
 
       </div>
-
-    {:else}
-
-
-      <div class="stepInStone">
-        
-        <p>Not sure where to begin? What are you interested in? (Start an Investigation) (TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
-
-      </div>
-
-      <div class="stepInStone">
-        
-        <p>Unsatisfied with the paths before you? (Write your own and become a trailblazer!)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
-
-      </div>
-
-      <div class="stepInStone">
-        
-        <p>Struggling with some challenge before you? (Ask a question to seek help from others)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
-
-      </div>
-
-      <div class="stepInStone">
-        
-        <p>Interesting in sharing your accumulated experiences? (Post up as a knowledge source for various areas you are familiar with)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
-
-      </div>
-
-      <div class="stepInStone">
-        
-        <p>Don't see what you're looking for? Suggest a new Step In Stone Here(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
-
-      </div>
-    
-    {/if}
 
   </div> 
 

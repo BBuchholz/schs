@@ -8,7 +8,7 @@
   const { addNotification } = getNotificationsContext();
 
   import { 
-    currentBookTitle,
+    // currentBookTitle,
   } from './stores.js';
 
   import OpenBookOption from './OpenBookOption.svelte';

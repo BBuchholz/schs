@@ -14,7 +14,7 @@
   const { addNotification } = getNotificationsContext();
 
   import { 
-    currentBookTitle,
+    // currentBookTitle,
     passPhrase,
     devMode,
     currentMDWxrd,

@@ -13,6 +13,8 @@
     currentMDWxrd,
   } from './stores.js';
 
+
+  let currentTopic = '';
   
   const urlParams = 
     new URLSearchParams(window.location.search);
@@ -37,9 +39,13 @@ When you have finished viewing the video, POST A COMMENT HERE with your verifcat
 
     `;
     
-  
 
     console.log('currentMDWxrd is: ' + $currentMDWxrd);
+  }
+
+  if(urlParams.has('topic')){
+    $passPhrase = 'Topics';
+    currentTopic = urlParams.get('topic');
   }
 
   import MyriadNotification from './MyriadNotification.svelte';
@@ -51,6 +57,7 @@ When you have finished viewing the video, POST A COMMENT HERE with your verifcat
   import KiplingLayout from './KiplingLayout.svelte';
   import MyrKiLayout from './MyrKiLayout.svelte';
   import VerifiableViewer from './VerifiableViewer.svelte';
+  import TopicBrowser from './TopicBrowser.svelte';
   import HelpDesk from './HelpDesk.svelte';
   import WxrdPage from './components/WxrdPage.svelte';
   import LeMarchand from './LeMarchand.svelte';
@@ -93,6 +100,10 @@ When you have finished viewing the video, POST A COMMENT HERE with your verifcat
       {#if $passPhrase === 'SFS'}
 
         <KiplingLayout />
+
+      {:else if $passPhrase === 'Topics'}
+
+        <TopicBrowser {currentTopic} />
 
       {:else if $passPhrase === 'verifyView' && $currentMDWxrd}
 

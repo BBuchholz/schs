@@ -29,48 +29,48 @@
   //   // $currentBook = newBook;
   //   // $currentBookCount = $currentBookCount + 1;
 
-  //   let newBook = { title: currentMyrKi };
+  //   let newBook = { title: currentTopic };
   //   // $currentBook = newBook;
 
   //   // notify('accessing door fitting key: ' + $currentBookTitle);
   // }
 
-  function enterPassPhrase() {
+  // function navigateToTopic() {
 
-    $passPhrase = currentMyrKi;
-    notify('passPhrase set to: ' + $passPhrase);
-  }  
-  
-  function handleOpenClick(){
 
-    if(!currentMyrKi){
-      notify('name cannnot be empty');
-      return;
-    }
     
-    enterPassPhrase();
-    close();
-  }
+  //   notify('current topic is: ' + currentTopic);
+  // }  
+  
+  // function handleOpenClick(){
 
-  let currentMyrKi = '';
+  //   if(!currentTopic){
+  //     notify('topic cannnot be empty');
+  //     return;
+  //   }
+    
+  //   navigateToTopic();
+  //   close();
+  // }
+
+  let currentTopic = '';
 
 </script>
 
 <div class='daedalus-lab'>
   
-  <input bind:value={currentMyrKi} placeholder="enter MyrKi" />  
+  <input bind:value={currentTopic} placeholder="enter a topic" />  
 
   <div class="lab-item">
     <a 
-      href="#turnMyrKi"
-      on:click={handleOpenClick}
+      href="?topic={currentTopic}"
     > 
-      Enter
+      {currentTopic}
     </a>
   </div>
 
   <div class="hint">
-    Need a hint? SCHS is for hands on EXPLORERS, check <a href="https://github.com/BBuchholz/codified-heart-song/blob/main/src/App.svelte" target="blank">the public code repo on github for passPhrase clues</a>
+    What are you interested in?
   </div>
 
 </div>
