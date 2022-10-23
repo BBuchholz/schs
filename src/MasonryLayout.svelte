@@ -46,38 +46,38 @@
 
     <div class="stepInStone">
       
-      <p>Not sure where to begin? SCHS is a place where you can explore new learning in a sharing focused format. Any topic is a good topic if if interests you, start an investigation into something new...</p>
+      <p>Not sure where to begin? SCHS is a place where you can explore new learning in a sharing focused format. Any topic is a good topic if if interests you, start an adventure into something new...</p>
 
       <h2 
         class='stepInStone'
         on:click={showPromptStartInvestigation}
       >
-        Start an Investigation
+        Start an Exploration
       </h2>
 
     </div>
 
     <div class="stepInStone">
       
-      <p>Unsatisfied with the paths before you? (Write your own and become a trailblazer!)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+      <p>Unsatisfied with the paths before you? (Write your own and become a trailblazer!)(TURN THESE INTO BUTTONS)</p>
 
     </div>
 
     <div class="stepInStone">
       
-      <p>Struggling with some challenge before you? (Ask a question to seek help from others)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+      <p>Struggling with some challenge before you? (Ask a question to seek help from others)(TURN THESE INTO BUTTONS)</p>
 
     </div>
 
     <div class="stepInStone">
       
-      <p>Interesting in sharing your accumulated experiences? (Post up as a knowledge source for various areas you are familiar with)(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+      <p>Interested in sharing your accumulated experiences? (Post up as a knowledge source for various areas you are familiar with)(TURN THESE INTO BUTTONS)</p>
 
     </div>
 
     <div class="stepInStone">
       
-      <p>Don't see what you're looking for? Suggest a new Step In Stone Here(TURN THESE INTO BUTTONS THAT PREFILL THE BOX)</p>
+      <p>Don't see what you're looking for? Suggest a new Step In Stone Here(TURN THESE INTO BUTTONS)</p>
 
     </div>
   
@@ -98,6 +98,7 @@
 
   .stepInStone {
     display: inline-block;
+    text-align: center;
     margin:  0.25rem;
     padding:  1rem;
     width:  100%; 

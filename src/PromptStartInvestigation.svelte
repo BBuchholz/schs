@@ -57,35 +57,43 @@
 
 </script>
 
-<div class='daedalus-lab'>
-  
-  <input bind:value={currentTopic} placeholder="enter a topic" />  
+<div class='main'>
 
-  <div class="lab-item">
+
+  <div class="section">
+    <p>
+      What are you interested in?
+    </p>
+  </div>  
+
+  <div class="section">
+    <input bind:value={currentTopic} placeholder="enter a topic" />  
+  </div>
+
+  {#if currentTopic}
+  <div class="section">
     <a 
       href="?topic={currentTopic}"
     > 
       {currentTopic}
     </a>
   </div>
+  {/if}
 
-  <div class="hint">
-    What are you interested in?
-  </div>
 
 </div>
 
 <style>
 
-.daedalus-lab {
+.main {
   border: solid;
   border-radius: 10px;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column;
   justify-content: space-around;
 }
 
-.lab-item {
+.section {
   margin: 10px;
   padding: 10px;
   border: thin solid;
