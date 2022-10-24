@@ -59,7 +59,23 @@
 
     <div class="stepInStone">
       
+      <p>
+        "Success is stumbling from failure to failure with no loss of enthusiasm" -- Winston Churchill
+      </p>
+
+    </div>
+
+    <div class="stepInStone">
+      
       <p>Unsatisfied with the paths before you? (Write your own and become a trailblazer!)(TURN THESE INTO BUTTONS)</p>
+
+    </div>
+
+    <div class="stepInStone">
+      
+      <p>
+        "You become what you give your attention to" -- Epictetus
+      </p>
 
     </div>
 
@@ -71,7 +87,33 @@
 
     <div class="stepInStone">
       
+      <p>
+        "Education is not something you can finish" -- Isaac Asimov
+      </p>
+
+    </div>
+
+    <div class="stepInStone">
+      
       <p>Interested in sharing your accumulated experiences? (Post up as a knowledge source for various areas you are familiar with)(TURN THESE INTO BUTTONS)</p>
+
+    </div>
+
+
+    <!-- TEMPLATE -->
+    <!-- <div class="stepInStone">
+      
+      <p>
+        REPLACE_THIS
+      </p>
+
+    </div> -->
+
+    <div class="stepInStone">
+      
+      <p>
+        "Try to learn something about everything and everything about something" -- Thomas Huxley
+      </p>
 
     </div>
 
