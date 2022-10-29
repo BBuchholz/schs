@@ -23,18 +23,6 @@
     });
   }
 
-  // function turnMyrKi() {
-
-  //   // let newBook = { title: 'Test ' + $currentBookCount };
-  //   // $currentBook = newBook;
-  //   // $currentBookCount = $currentBookCount + 1;
-
-  //   let newBook = { title: currentMyrKi };
-  //   // $currentBook = newBook;
-
-  //   // notify('accessing door fitting key: ' + $currentBookTitle);
-  // }
-
   function enterPassPhrase() {
 
     $passPhrase = currentMyrKi;
@@ -70,7 +58,7 @@
   </div>
 
   <div class="hint">
-    Need a hint? SCHS is for hands on EXPLORERS, check <a href="https://github.com/BBuchholz/codified-heart-song/blob/main/src/App.svelte" target="blank">the public code repo on github for passPhrase clues</a>
+    Looking for a Back Alley? SFS is for those Ready And Willing to Get it By Any Means, here's <a href="https://github.com/BBuchholz/codified-heart-song/blob/main/src/App.svelte" target="blank">a link to the code repo</a>, more than enough to get you in if you belong here...
   </div>
 
 </div>

@@ -28,7 +28,7 @@
       class='title'
       on:click={showPromptEnterPassPhrase}
     >
-      Socratic Circle Home School
+      School For Scoundrels
     </h1>
 
     <p class='tagline'>
@@ -50,7 +50,45 @@
           </a>
         </div>
 
-        <p>First Lesson: The Creativity Delusion</p>
+        <p>Video Assignment: The Creativity Delusion</p>
+
+      </div>
+
+
+      <div class="stepInStone">
+        
+        <div class="lab-item">
+          <a href="https://youtu.be/MZ2GuvUWaP8"> 
+            Watch Me
+          </a>
+        </div>
+
+        <p>Video Assignment: Everything Is A Remix</p>
+
+      </div>
+
+
+      <div class="stepInStone">
+        
+        <div class="lab-item">
+          <a href="https://www.scribd.com/document/241241556/steal-like-an-artist"> 
+            Read Me
+          </a>
+        </div>
+
+        <p>Reading Assignment: Steal Like An Artist</p>
+
+      </div>
+
+
+
+      <div class="stepInStone">
+        
+        <div class="lab-item">
+          COMING SOON
+        </div>
+
+        <p>Arkhives</p>
 
       </div>
 
