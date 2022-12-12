@@ -1,7 +1,29 @@
 <script>
-  import { Button, Modal } from 'sveltestrap';
-  let isOpen = false;
-  const toggle = () => (isOpen = !isOpen);
+  
+  import FoundlingLayout from './FoundlingLayout.svelte';
+
+  import NavBarLayout from './NavBarLayout.svelte'; 
+
+  import {
+    passPhrase,
+  } from './stores.js';
+
+  let layoutPreference = "NavBarLayout";
+
+  function initialize(){
+
+    const urlParams = 
+      new URLSearchParams(window.location.search);
+    
+    if(urlParams.has('passPhrase')){
+      $passPhrase = urlParams.get('passPhrase');
+      console.log('passPhrase set to: ' + $passPhrase);
+
+    }
+  }
+
+  initialize();
+
 </script>
 
 <svelte:head>
@@ -9,12 +31,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </svelte:head>
 
-<Button color="primary" on:click={toggle}>Hello World!</Button>
-<Modal body {isOpen} {toggle} header="Hello World!">
-  <p>There's a song that we're singing. Come on</p>
-  <img
-    src="https://i.ytimg.com/vi/NUJIRujygvY/hqdefault.jpg"
-    alt="Come on Get Happy"
-    class="img-fluid"
-  />
-</Modal>
+<div class="main">
+  
+  <NavBarLayout />
+  
+</div>
