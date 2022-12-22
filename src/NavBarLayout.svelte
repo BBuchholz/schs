@@ -24,7 +24,7 @@
 </script>
 
 <Navbar color="light" light expand="md">
-  <NavbarBrand href="/">Amateur Hour</NavbarBrand>
+  <NavbarBrand href="/">Socratic Circle</NavbarBrand>
   <NavbarToggler on:click={() => (isOpen = !isOpen)} />
   <Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
     <Nav class="ms-auto" navbar>
