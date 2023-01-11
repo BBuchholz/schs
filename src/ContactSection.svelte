@@ -10,13 +10,6 @@
     passPhrase,
   } from './stores.js';
 
-  import HelpSection from './HelpSection.svelte';
-  import LoginSection from './LoginSection.svelte';
-  import AboutSection from './AboutSection.svelte';
-  import ContactSection from './ContactSection.svelte';
-  import NewsSection from './NewsSection.svelte';
-  import HomeSection from './HomeSection.svelte';
-
 
 </script>
 
