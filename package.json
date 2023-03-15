@@ -27,7 +27,7 @@
     "svelte-jester": "^2.1.5",
     "svelte-loader": "^3.1.4",
     "svelte-preprocess": "^5.0.0",
-    "webpack": "^5.75.0",
+    "webpack": "^5.76.0",
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
